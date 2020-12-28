@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <ul>
+            <!-- 只是获取一个值，取到的是value -->
+            <li v-for="item in info">{{item}}</li>
+        </ul>
+        <ul>
+            <!-- 两个值，value/key -->
+            <li v-for="(value,key) in info">{{value}} -- {{key}}</li>
+        </ul>
+        <ul>
+            <!-- 三个值，value/key/index -->
+            <li v-for="(value,key,index) in info">{{value}} -- {{key}} -- {{index}}</li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                info: {
+                    name: 'fdsa',
+                    age: 14,
+                    height: 1.88
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
