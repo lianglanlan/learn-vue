@@ -15,9 +15,10 @@
 <body>
     <div id="app" v-cloak>
         <span v-if="isUser">
-            <label>用户账户 <input type="text" placeholder="用户账户"></label></span>
+            <label>用户账户 <input type="text" placeholder="用户账户"></label>
+        </span>
         <span v-else>
-            <label>用户邮箱 <input type="text" placeholder="用户邮箱"></label></span>
+            <label>用户邮箱 <input type="text" placeholder="用户邮箱"></label>
         </span>
         <button @click="isUser = !isUser">切换类型</button>
     </div>
