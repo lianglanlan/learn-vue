@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <span v-if="isUser">
+            <label>用户账户 <input type="text" placeholder="用户账户"></label></span>
+        <span v-else>
+            <label>用户邮箱 <input type="text" placeholder="用户邮箱"></label></span>
+        </span>
+        <button @click="isUser = !isUser">切换类型</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                isUser: true
+            }
+        })
+    </script>
+</body>
+
+</html>
