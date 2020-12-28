@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <ul>
+            <li v-for="item in letters" :key="item">{{item}}</li>
+        </ul>
+        <button @click="btnClick">点击</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                letters: ['a', 'b', 'c', 'd']
+            },
+            methods: {
+                btnClick() {
+                    //1. push方法，响应式，页面数据会发生变化（同理，pop,shift,unshift,splice,sort,reverse,都是响应式的）
+                    this.letters.push('aa')
+
+                    //2. 通过索引值修改数组中的元素，非响应式
+                    this.letters[0] = 'bbb'
+                    //可通过这种方做到响应式 (推荐)
+                    // this.letters.splice(0, 1, 'bbb')
+                    //或者这样做
+                    // Vue.set(this.letters, 0, 'bbb')
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
