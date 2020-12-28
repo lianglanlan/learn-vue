@@ -10,7 +10,7 @@ const app = new Vue({
                 count: 1
             }, {
                 id: 2,
-                name: '《算法导论》',
+                name: '《代码大全》',
                 date: '2006-9',
                 price: 59,
                 count: 1
@@ -40,6 +40,18 @@ const app = new Vue({
         },
         decrement(index) {
             this.books[index].count--
+        },
+        removeHandle(index) {
+            this.books.splice(index, 1)
         }
     },
+    computed: {
+        totalPrice() {
+            let totalPrice = 0
+            for (let i = 0; i < this.books.length; i++) {
+                totalPrice += this.books[i].price * this.books[i].count
+            }
+            return totalPrice
+        }
+    }
 })
