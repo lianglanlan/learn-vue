@@ -18,6 +18,10 @@
         <my-cpn></my-cpn>
         <my-cpn></my-cpn>
         <my-cpn></my-cpn>
+        <cpn></cpn>
+    </div>
+    <div id="app2">
+        <my-cpn></my-cpn>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
@@ -31,13 +35,21 @@
                 </div>`,
 
         })
-        //2.注册组件
+        //2.注册组件（在app,app2中都可使用，是全局组件）
         Vue.component('my-cpn', cpnC)
         const app = new Vue({
             el: '#app',
             data: {
                 isUser: true
+            },
+            //局部组件
+            components: {
+                cpn: cpnC
             }
+        })
+
+        const app2 = new Vue({
+            el: '#app2'
         })
     </script>
 </body>
