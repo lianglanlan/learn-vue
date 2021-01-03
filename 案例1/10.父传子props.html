@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <cpn :cmovies="movies" :cmessage="message"></cpn>
+    </div>
+    <template id="cpn">
+        <div>
+            <p>{{cmovies}}</p>
+            <h2>{{cmessage}}</h2>
+        </div>
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //父传子：props
+        const cpn = {
+            template: '#cpn',
+            data() {
+                return {
+
+                }
+            },
+            //数组写法
+            // props: ['cmovies']
+            //对象写法,可参照vue文档中 Prop验证
+            props: {
+                cmovies: Array, //类型限制
+                cmessage: {
+                    type: String,
+                    default: 'aaa',  //默认值
+                    required: true //必填
+                },
+                cmovies2: {
+                    //default: ['fdsa', 'fdsafd'] //数组类型的默认值会报错，需转成函数返回
+                    default() {
+                        return ['fdsa', 'fdsafd']
+                    }
+                }
+            }
+        }
+        const app = new Vue({
+            el: '#app',
+            data: {
+                movies: ['海王', '海贼王', '海尔兄弟'],
+                message: 'fsa'
+            },
+            components: {
+                cpn
+            }
+        })
+    </script>
+</body>
+
+</html>
