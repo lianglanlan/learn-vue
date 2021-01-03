@@ -15,36 +15,39 @@
 <body>
     <div id="app" v-cloak>
         <!-- 3.使用组件 -->
-        <my-cpn></my-cpn>
-        <my-cpn></my-cpn>
-        <my-cpn></my-cpn>
         <cpn></cpn>
+        <cpn1></cpn1>
     </div>
     <div id="app2">
         <my-cpn></my-cpn>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
-        //1.创建组件构造器对象
-        const cpnC = Vue.extend({
+        //2.注册组件（在app,app2中都可使用，是全局组件）
+        Vue.component('cpn1', {
             template: `
                 <div>
-                    <h2>我是标题</h2>
+                    <h2>我是标题1</h2>
                     <p>我是内容</p>
                     <p>我是内容</p>
                 </div>`,
 
         })
-        //2.注册组件（在app,app2中都可使用，是全局组件）
-        Vue.component('my-cpn', cpnC)
         const app = new Vue({
             el: '#app',
             data: {
                 isUser: true
             },
-            //局部组件
+            // //局部组件
             components: {
-                cpn: cpnC
+                cpn: {
+                    template: `
+                        <div>
+                            <h2>我是标题2</h2>
+                            <p>我是内容</p>
+                            <p>我是内容</p>
+                        </div>`,
+                }
             }
         })
 
