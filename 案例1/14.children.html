@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <cpn></cpn>
+        <cpn></cpn>
+        <cpn ref="aaa"></cpn>
+        <button @click="btnClick">按钮</button>
+    </div>
+    <template id="cpn">
+        <div>
+            我是子组件
+        </div>
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                btnClick() {
+                    //用得少，下标容易变
+                    // this.$children[0].showMessage()
+
+                    //$refs用的多
+                    console.log(this.$refs.aaa)
+                }
+            },
+            components: {
+                cpn: {
+                    template: '#cpn',
+                    methods: {
+                        showMessage() {
+                            console.log('showMessage')
+                        }
+                    },
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>
