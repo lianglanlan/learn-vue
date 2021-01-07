@@ -18,9 +18,9 @@
 
         <cpn>
             <!-- 目的是获取子组件的pLanguages -->
-            <template v-slot:default="slot">
+            <template #default="{ data }">
                 <!-- <span v-for="item in slot.data">{{item}}--</span> -->
-                <span>{{slot.data.join(' - ')}} </span>
+                <span>{{data.join(' - ')}} </span>
             </template>
         </cpn>
     </div>
