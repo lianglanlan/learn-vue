@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <cpn>
+            <span slot="center">标题</span>
+            <button slot="left">返回</button>
+
+            <span>范德萨</span>
+        </cpn>
+    </div>
+    <template id="cpn">
+        <div>
+            <slot name="left"><span>左边</span></slot>
+            <slot name="center"><span>中间</span></slot>
+            <slot name="right"><span>右边</span></slot>
+            <slot></slot>
+        </div>
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            components: {
+                cpn: {
+                    template: '#cpn',
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>
