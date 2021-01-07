@@ -15,9 +15,12 @@
 <body>
     <div id="app" v-cloak>
         <cpn>
-            <span slot="center">标题</span>
-            <button slot="left">返回</button>
-
+            <template v-slot:center>
+                <span>标题</span>
+            </template>
+            <template v-slot:left>
+                <button>返回</button>
+            </template>
             <span>范德萨</span>
         </cpn>
     </div>
