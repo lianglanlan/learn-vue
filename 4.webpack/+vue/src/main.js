@@ -13,9 +13,23 @@ document.writeln('<h2>你好</h2>')
 
 // //使用vue
 import Vue from 'vue'
-const app = new Vue({
+new Vue({
     el: '#app',
+    //此处的template会替换掉#app
+    template: `
+        <div>
+            <h2>{{message}}</h2>
+            <button @click="btnClick">按钮</button>
+            <h2>{{name}}</h2>
+        </div>
+    `,
     data: {
-        message: 'hello webpack'
+        message: 'hello webpack',
+        name: '小明'
+    },
+    methods: {
+        btnClick() {
+            console.log(1)
+        }
     }
 })

@@ -808,10 +808,17 @@ document.writeln('<h2>你好</h2>');
 
 // //使用vue
 
-var app = new _vue2.default({
+new _vue2.default({
     el: '#app',
+    template: '\n        <div>\n            <h2>{{message}}</h2>\n            <button @click="btnClick">\u6309\u94AE</button>\n            <h2>{{name}}</h2>\n        </div>\n    ',
     data: {
-        message: 'hello webpack'
+        message: 'hello webpack',
+        name: '小明'
+    },
+    methods: {
+        btnClick: function btnClick() {
+            console.log(1);
+        }
     }
 });
 
