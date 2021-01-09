@@ -562,54 +562,59 @@ function updateLink (link, options, obj) {
 
 /***/ }),
 /* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_info__ = __webpack_require__(4);
-const { add, mul } = __webpack_require__(3)
-
-console.log(add(20, 30))
 
 
-console.log(__WEBPACK_IMPORTED_MODULE_0__js_info__["a" /* name */])
+var _info = __webpack_require__(3);
+
+var _require = __webpack_require__(4),
+    add = _require.add,
+    mul = _require.mul;
+
+console.log(add(20, 30));
+
+console.log(_info.name);
 
 //添加这行代码后打包报错,需添加css loader
-__webpack_require__(5)
+__webpack_require__(5);
 // 需添加less相对应loader
-__webpack_require__(8)
-document.writeln('<h2>你好</h2>')
+__webpack_require__(8);
+document.writeln('<h2>你好</h2>');
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-function add(num1, num2) {
-    return num1 + num2
-}
+"use strict";
 
-function mul(num1, num2) {
-    return num1 * num2
-}
 
-module.exports = {
-    add, mul
-}
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var name = exports.name = 'lanlan';
+var age = exports.age = 18;
+var height = exports.height = 1.88;
 
 /***/ }),
 /* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-const name = 'lanlan'
-/* harmony export (immutable) */ __webpack_exports__["a"] = name;
 
-const age = 18
-/* unused harmony export age */
 
-const height = 1.88
-/* unused harmony export height */
+function add(num1, num2) {
+    return num1 + num2;
+}
 
+function mul(num1, num2) {
+    return num1 * num2;
+}
+
+module.exports = {
+    add: add, mul: mul
+};
 
 /***/ }),
 /* 5 */

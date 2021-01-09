@@ -40,6 +40,16 @@ module.exports = {
                         }
                     }
                 ],
+            },
+            {
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/, //排除
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['es2015']
+                    }
+                }
             }
         ]
     }
