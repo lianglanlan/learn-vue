@@ -15,6 +15,18 @@ module.exports = {
                 //style-loader负责将样式添加到DOM中
                 //webpack使用多个loader时是从右向左执行，所以应该把css-loader放在右边
                 use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.less$/,
+                use: [
+                    {
+                        loader: "style-loader"
+                    }, {
+                        loader: "css-loader"
+                    }, {
+                        loader: "less-loader"
+                    }
+                ]
             }
         ]
     }
