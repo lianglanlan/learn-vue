@@ -10,3 +10,12 @@ require('./css/normal.css')
 // 需添加less相对应loader
 require('./css/special.less')
 document.writeln('<h2>你好</h2>')
+
+// //使用vue
+import Vue from 'vue'
+const app = new Vue({
+    el: '#app',
+    data: {
+        message: 'hello webpack'
+    }
+})
