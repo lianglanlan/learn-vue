@@ -5,7 +5,8 @@ module.exports = {
     output: {
         // path: './dist', //这样写会报错，需要写绝对路径
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: 'dist/' //给url加路径
     },
     module: {
         rules: [
@@ -25,6 +26,17 @@ module.exports = {
                         loader: "css-loader"
                     }, {
                         loader: "less-loader"
+                    }
+                ]
+            },
+            {
+                test: /\.(png|jpg|gif|jpeg)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192    //当加载的图片小于limit时，会将图片编辑成base64格式。大于时，需要使用file-loader进行加载
+                        }
                     }
                 ]
             }
