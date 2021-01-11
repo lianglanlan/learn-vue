@@ -441,7 +441,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(12);
+var	fixUrls = __webpack_require__(13);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -786,13 +786,17 @@ function updateLink (link, options, obj) {
 
 var _info = __webpack_require__(5);
 
-var _vue = __webpack_require__(6);
+var _app = __webpack_require__(6);
+
+var _app2 = _interopRequireDefault(_app);
+
+var _vue = __webpack_require__(7);
 
 var _vue2 = _interopRequireDefault(_vue);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _require = __webpack_require__(9),
+var _require = __webpack_require__(10),
     add = _require.add,
     mul = _require.mul;
 
@@ -801,24 +805,18 @@ console.log(add(20, 30));
 console.log(_info.name);
 
 //添加这行代码后打包报错,需添加css loader
-__webpack_require__(10);
+__webpack_require__(11);
 // 需添加less相对应loader
-__webpack_require__(13);
+__webpack_require__(14);
 document.writeln('<h2>你好</h2>');
 
 // //使用vue
 
 new _vue2.default({
     el: '#app',
-    template: '\n        <div>\n            <h2>{{message}}</h2>\n            <button @click="btnClick">\u6309\u94AE</button>\n            <h2>{{name}}</h2>\n        </div>\n    ',
-    data: {
-        message: 'hello webpack',
-        name: '小明'
-    },
-    methods: {
-        btnClick: function btnClick() {
-            console.log(1);
-        }
+    template: '<App/>',
+    components: {
+        App: _app2.default
     }
 });
 
@@ -838,6 +836,32 @@ var height = exports.height = 1.88;
 
 /***/ }),
 /* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = {
+    template: '\n        <div>\n            <h2>{{message}}</h2>\n            <button @click="btnClick">\u6309\u94AE</button>\n            <h2>{{name}}</h2>\n        </div>\n    ',
+    data: function data() {
+        return {
+            message: 'hello webpack',
+            name: '小明'
+        };
+    },
+
+    methods: {
+        btnClick: function btnClick() {
+            console.log(1);
+        }
+    }
+};
+
+/***/ }),
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11932,10 +11956,10 @@ Vue.compile = compileToFunctions;
 
 /* harmony default export */ __webpack_exports__["default"] = (Vue);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1), __webpack_require__(0), __webpack_require__(7).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1), __webpack_require__(0), __webpack_require__(8).setImmediate))
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -11991,7 +12015,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(8);
+__webpack_require__(9);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -12005,7 +12029,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -12198,7 +12222,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(1)))
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12217,11 +12241,11 @@ module.exports = {
 };
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(11);
+var content = __webpack_require__(12);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -12267,7 +12291,7 @@ if(false) {
 }
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -12277,7 +12301,7 @@ exports.push([module.i, "body {\n    background-color: pink;\n}", ""]);
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports) {
 
 
@@ -12372,11 +12396,11 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(14);
+var content = __webpack_require__(15);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -12422,21 +12446,21 @@ if(false) {
 }
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
 // Imports
-var urlEscape = __webpack_require__(15);
-var ___CSS_LOADER_URL___0___ = urlEscape(__webpack_require__(16));
+var urlEscape = __webpack_require__(16);
+var ___CSS_LOADER_URL___0___ = urlEscape(__webpack_require__(17));
 
 // Module
-exports.push([module.i, "body {\n  font-size: 50px;\n  color: orange;\n  background: url(" + ___CSS_LOADER_URL___0___ + ");\n}\n", ""]);
+exports.push([module.i, "body {\n  font-size: 50px;\n  color: orange;\n  background: url(" + ___CSS_LOADER_URL___0___ + ");\n  display: -webkit-box;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical;\n}\n", ""]);
 
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12462,7 +12486,7 @@ module.exports = function escape(url) {
 };
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "img/1.1ee20c5d.jpeg";

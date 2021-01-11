@@ -5,4 +5,9 @@ body{
     font-size: @fontSize;
     color: @fontColor;
     background: url(../img/1.jpeg);
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp:2;
+    -webkit-box-orient: vertical
 }
