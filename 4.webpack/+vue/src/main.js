@@ -11,7 +11,7 @@ require('./css/normal.css')
 require('./css/special.less')
 document.writeln('<h2>你好</h2>')
 
-import App from './vue/app'
+import App from './vue/App.vue'
 
 // //使用vue
 import Vue from 'vue'
