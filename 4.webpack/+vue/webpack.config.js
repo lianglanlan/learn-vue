@@ -1,6 +1,7 @@
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './src/main.js',
@@ -8,7 +9,7 @@ module.exports = {
         // path: './dist', //这样写会报错，需要写绝对路径
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
-        publicPath: 'dist/' //给url加路径
+        // publicPath: 'dist/' //给url加路径
     },
     module: {
         rules: [
@@ -62,7 +63,10 @@ module.exports = {
     plugins: [
         // 请确保引入这个插件！
         new VueLoaderPlugin(),
-        new webpack.BannerPlugin('最终版权归lanlan所有')    //在bundle.js第一行添加信息
+        new webpack.BannerPlugin('最终版权归lanlan所有'),    //在bundle.js第一行添加信息
+        new HtmlWebpackPlugin({
+            template: 'index.html'
+        })
     ],
     resolve: {
         extensions: [".js", ".vue"],
