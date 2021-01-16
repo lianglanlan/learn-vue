@@ -2,6 +2,7 @@ const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
     entry: './src/main.js',
@@ -66,7 +67,8 @@ module.exports = {
         new webpack.BannerPlugin('最终版权归lanlan所有'),    //在bundle.js第一行添加信息
         new HtmlWebpackPlugin({
             template: 'index.html'
-        })
+        }),
+        new UglifyJsPlugin()
     ],
     resolve: {
         extensions: [".js", ".vue"],
