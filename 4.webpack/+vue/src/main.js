@@ -9,7 +9,7 @@ console.log(name)
 require('./css/normal.css')
 // 需添加less相对应loader
 require('./css/special.less')
-document.writeln('<h2>你好</h2>')
+document.writeln('<h2>你好你好你好</h2>')
 
 import App from './vue/App.vue'
 
