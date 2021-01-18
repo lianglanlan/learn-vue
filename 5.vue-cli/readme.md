@@ -11,7 +11,28 @@ vue cli2初始化项目
 ```
 vue init webpack 6.vuecli2test
 ```
-命令行运行后敲回车，在选择vue build时，应该选runtime-only。此处选runtime+compiler看看不同
+命令行运行后敲回车，在选择vue build时，应该选runtime-only
+### runtime-compiler和runtime-only的区别
+区别在main.js
+* runtime-compiler  
+```
+new Vue({
+  el: '#app',
+  components: { App },
+  template: '<App/>'
+})
+```
+template => ast => render => vdom(虚拟Dom) => ui（ui页面）
+* *runtime-only      
+```
+new Vue({
+  el: '#app',
+  render: h => h(App)
+})
+```
+render => vdom => ui
+1、步骤少，性能高
+2、代码量少
 
 Install vue-router? 暂时不需要，选n
 
