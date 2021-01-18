@@ -23,7 +23,7 @@ new Vue({
 })
 ```
 template => ast => render => vdom(虚拟Dom) => ui（ui页面）
-* *runtime-only      
+* runtime-only      
 ```
 new Vue({
   el: '#app',
@@ -31,8 +31,11 @@ new Vue({
 })
 ```
 render => vdom => ui
-1、步骤少，性能高
-2、代码量少
+那么,.vue中的template是由谁处理了呢。是由`vue-template-compiler`处理的
+
+
+1. 步骤少，性能高
+2. 代码量少
 
 Install vue-router? 暂时不需要，选n
 
