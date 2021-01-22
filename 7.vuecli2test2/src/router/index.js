@@ -28,6 +28,7 @@ const routes = [
 
 const router = new VueRouter({
     mode: 'history',
+    linkActiveClass: 'active',
     routes  //配置路由和组件之间的应用关系
 })
 
