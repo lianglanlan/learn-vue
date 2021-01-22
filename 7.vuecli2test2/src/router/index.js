@@ -5,6 +5,7 @@ import Vue from 'vue'
 //导入组件
 import Home from '../components/Home.vue'
 import About from '../components/About.vue'
+import User from '../components/User.vue'
 
 //1.通过Vue.use(插件)，安装插件
 Vue.use(VueRouter)
@@ -23,6 +24,9 @@ const routes = [
     }, {
         path: '/about',
         component: About
+    }, {
+        path: '/user/:id',
+        component: User
     }
 ]
 
