@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <router-link to="/home" tag="button">首页</router-link>
+    <!-- replace不会留下history记录 -->
+    <router-link to="/home" tag="button" replace>首页</router-link>
     <router-link to="/about" tag="button">关于</router-link>
     <router-view></router-view>
   </div>
