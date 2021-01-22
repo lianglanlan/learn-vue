@@ -27,6 +27,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
+    mode: 'history',
     routes  //配置路由和组件之间的应用关系
 })
 
