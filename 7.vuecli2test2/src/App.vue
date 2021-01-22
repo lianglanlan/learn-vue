@@ -5,6 +5,7 @@
     <!-- active-class默认值router-link-active -->
     <router-link to="/about" tag="button">关于</router-link>
     <router-view></router-view>
+    <button @click="homeClick">首页</button>
   </div>
 </template>
 
@@ -12,6 +13,12 @@
 export default {
   name: "App",
   components: {},
+  methods: {
+    homeClick() {
+      // this.$router.push("/home");
+      this.$router.replace("/home");
+    },
+  },
 };
 </script>
 
