@@ -12,6 +12,11 @@ Vue.use(VueRouter)
 //2.创建路由对象
 
 const routes = [
+    //添加首页重定向
+    {
+        path: '',
+        redirect: '/home'
+    },
     {
         path: '/home',
         component: Home
