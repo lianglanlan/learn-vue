@@ -10,5 +10,18 @@
 <script>
 export default {
   name: "Home",
+  data() {
+    return {
+      path: "/home/news",
+    };
+  },
+  activated() {
+    //使用keep-alive时，进入home组件会调用
+    this.$router.push(this.path);
+  },
+  beforeRouteLeave(to, from, next) {
+    this.path = this.$route.path;
+    next();
+  },
 };
 </script>
