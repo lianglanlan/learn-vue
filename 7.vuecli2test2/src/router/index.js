@@ -28,6 +28,10 @@ const routes = [
     {
         path: '/home',
         component: Home,
+        beforeEnter: (to, from, next) => {
+            console.log('首页独享守卫')
+            next()
+        },
         meta: {
             title: '首页'
         },
