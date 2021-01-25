@@ -8,6 +8,8 @@ import Vue from 'vue'
 // import User from '../components/User.vue'
 
 const Home = () => import('../components/Home.vue')
+const HomeNews = () => import('../components/HomeNews.vue')
+const HomeMessage = () => import('../components/HomeMessage.vue')
 const About = () => import('../components/About.vue')
 const User = () => import('../components/User.vue')
 
@@ -24,7 +26,20 @@ const routes = [
     },
     {
         path: '/home',
-        component: Home
+        component: Home,
+        children: [
+            {
+                path: '',
+                redirect: 'news'
+            },
+            {
+                path: 'news',   //子路由不需要加/
+                component: HomeNews
+            }, {
+                path: 'message',
+                component: HomeMessage
+            }
+        ]
     }, {
         path: '/about',
         component: About
