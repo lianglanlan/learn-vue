@@ -5,6 +5,9 @@
     <!-- active-class默认值router-link-active -->
     <router-link to="/about" tag="button">关于</router-link>
     <router-link :to="'/user/' + id" tag="button">用户</router-link>
+    <router-link :to="{ path: '/profile', query: { name: 'lanlan', age: 18 } }"
+      >档案</router-link
+    >
     <router-view></router-view>
     <button @click="homeClick">首页</button>
   </div>
