@@ -71,10 +71,16 @@ const router = new VueRouter({
     routes  //配置路由和组件之间的应用关系
 })
 
+//前置守卫
 router.beforeEach((to, from, next) => {
     //从from跳到to
     document.title = to.matched[0].meta.title
     next()
+})
+
+//后置钩子
+router.afterEach((to, from) => {
+    console.log('---')
 })
 
 //将router对象传入实例中
