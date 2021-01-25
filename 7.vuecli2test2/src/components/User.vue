@@ -13,5 +13,8 @@ export default {
       return this.$route.params.id;
     },
   },
+  created() {
+    console.log("user被创建"); //每次切换到profile都会打印
+  },
 };
 </script>
