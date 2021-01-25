@@ -8,7 +8,7 @@
     <router-link :to="{ path: '/profile', query: { name: 'lanlan', age: 18 } }">
       档案
     </router-link>
-    <keep-alive>
+    <keep-alive exclude="Profile">
       <router-view></router-view>
     </keep-alive>
     <button @click="homeClick">首页</button>

@@ -15,6 +15,9 @@ export default {
       path: "/home/news",
     };
   },
+  created() {
+    console.log("home被创建"); //第一次切换到home时打印
+  },
   activated() {
     //使用keep-alive时，进入home组件会调用
     this.$router.push(this.path);

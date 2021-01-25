@@ -7,5 +7,8 @@
 <script>
 export default {
   name: "Profile",
+  created() {
+    console.log("profile被创建"); //每次切换到profile都会打印
+  },
 };
 </script>
