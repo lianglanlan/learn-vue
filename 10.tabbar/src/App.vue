@@ -1,23 +1,36 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <div id="tab-bar">
+      <div class="tab-bar-item">首页</div>
+      <div class="tab-bar-item">分类</div>
+      <div class="tab-bar-item">购物车</div>
+      <div class="tab-bar-item">我的</div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
-}
+  name: "App",
+};
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import "./assets/css/base.css";
+#tab-bar {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  height: 49px;
+  display: flex;
+  background-color: #f1f1f1;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 5px 0;
+}
+
+.tab-bar-item {
+  flex: 1;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  line-height: 49px;
 }
 </style>
