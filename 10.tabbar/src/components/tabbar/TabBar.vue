@@ -1,9 +1,21 @@
 <template>
   <div id="tab-bar">
-    <div class="tab-bar-item">首页</div>
-    <div class="tab-bar-item">分类</div>
-    <div class="tab-bar-item">购物车</div>
-    <div class="tab-bar-item">我的</div>
+    <div class="tab-bar-item">
+      <img src="../../assets/img/tabbar/home.svg" alt="" />
+      首页
+    </div>
+    <div class="tab-bar-item">
+      <img src="../../assets/img/tabbar/home.svg" alt="" />
+      分类
+    </div>
+    <div class="tab-bar-item">
+      <img src="../../assets/img/tabbar/home.svg" alt="" />
+      购物车
+    </div>
+    <div class="tab-bar-item">
+      <img src="../../assets/img/tabbar/home.svg" alt="" />
+      我的
+    </div>
   </div>
 </template>
 <script>
@@ -26,6 +38,11 @@ export default {
 .tab-bar-item {
   flex: 1;
   text-align: center;
-  line-height: 49px;
+}
+
+.tab-bar-item img {
+  display: block;
+  width: 24px;
+  margin: 0 auto;
 }
 </style>
