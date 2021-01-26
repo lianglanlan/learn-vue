@@ -1,5 +1,5 @@
 <template>
-  <div class="tab-bar-item">
+  <div class="tab-bar-item" @click="itemClick">
     <!-- <img src="../../assets/img/tabbar/home.svg" alt="" />
     <div>首页</div> -->
     <div v-if="!isActive">
@@ -19,6 +19,16 @@ export default {
     return {
       isActive: false,
     };
+    å;
+  },
+  props: {
+    path: String,
+  },
+  methods: {
+    itemClick() {
+      console.log(this.path);
+      this.$router.replace(this.path).catch((err) => console.log(err));
+    },
   },
 };
 </script>
