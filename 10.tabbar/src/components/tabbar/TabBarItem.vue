@@ -16,10 +16,13 @@
 <script>
 export default {
   data() {
-    return {
-      isActive: false,
-    };
+    return {};
     å;
+  },
+  computed: {
+    isActive() {
+      return this.$route.path.indexOf(this.path) > -1;
+    },
   },
   props: {
     path: String,
