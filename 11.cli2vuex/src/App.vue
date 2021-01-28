@@ -7,8 +7,12 @@
     <button @click="$store.state.counter--">-</button> -->
     <button @click="addition">+</button>
     <button @click="subtraction">-</button>
-    <hello-vuex :counter="counter" />
     <h2>{{ $store.getters.powerCounter }}</h2>
+    <h2>
+      {{ $store.getters.more20stu }}
+    </h2>
+    <h2>{{ $store.getters.more20stuLength }}</h2>
+    <h2>通过参数传入界定的年龄{{ $store.getters.moreAgeStu(18) }}</h2>
   </div>
 </template>
 
@@ -24,6 +28,7 @@ export default {
       message: "我是App组件",
     };
   },
+  computed: {},
   methods: {
     addition() {
       this.$store.commit("increment");
