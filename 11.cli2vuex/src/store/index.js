@@ -19,7 +19,9 @@ const store = new Vuex.Store({
 
     },
     getters: {
-
+        powerCounter(state) {
+            return state.counter * state.counter
+        }
     },
     modules: {
 
