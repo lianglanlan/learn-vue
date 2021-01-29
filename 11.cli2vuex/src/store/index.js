@@ -24,7 +24,11 @@ const store = new Vuex.Store({
                 name: 'james',
                 age: 23
             }
-        ]
+        ],
+        info: {
+            name: 'lan',
+            age: 18
+        }
     },
     mutations: {
         increment(state) {
@@ -43,6 +47,16 @@ const store = new Vuex.Store({
         },
         addStu(state, stu) {
             state.students.push(stu)
+        },
+        changeAge(state) {
+            state.info.age = 16
+        },
+        addAddress(state) {
+            // state.info.address = '中国' //界面不会发生改变
+            Vue.set(state.info, 'address', '中国')
+        },
+        deletePro(state) {
+            Vue.delete(state.info, 'age')
         }
     },
     actions: {

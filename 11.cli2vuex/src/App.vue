@@ -16,6 +16,10 @@
     </h2>
     <h2>{{ $store.getters.more20stuLength }}</h2>
     <h2>通过参数传入界定的年龄{{ $store.getters.moreAgeStu(18) }}</h2>
+    <h2>展示info{{ $store.state.info }}</h2>
+    <button @click="changeAge">改变info年龄</button>
+    <button @click="addAddress">添加info地址属性</button>
+    <button @click="deletePro">删除属性</button>
   </div>
 </template>
 
@@ -55,6 +59,15 @@ export default {
         age: 35,
       };
       this.$store.commit("addStu", stu);
+    },
+    changeAge() {
+      this.$store.commit("changeAge");
+    },
+    addAddress() {
+      this.$store.commit("addAddress");
+    },
+    deletePro() {
+      this.$store.commit("deletePro");
     },
   },
 };
