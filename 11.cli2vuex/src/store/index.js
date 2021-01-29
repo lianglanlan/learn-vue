@@ -32,6 +32,12 @@ const store = new Vuex.Store({
         },
         decrement(state) {
             state.counter--
+        },
+        incrementCount(state, count) {
+            state.counter += count
+        },
+        addStu(state, stu) {
+            state.students.push(stu)
         }
     },
     actions: {
@@ -49,7 +55,7 @@ const store = new Vuex.Store({
         },
         moreAgeStu(state) {
             return age => state.students.filter((stu) => stu.age > age)
-        }
+        },
     },
     modules: {
 

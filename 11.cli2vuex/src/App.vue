@@ -7,6 +7,9 @@
     <button @click="$store.state.counter--">-</button> -->
     <button @click="addition">+</button>
     <button @click="subtraction">-</button>
+    <button @click="addCount(5)">+5</button>
+    <button @click="addCount(10)">+10</button>
+    <button @click="addStu()">添加学生</button>
     <h2>{{ $store.getters.powerCounter }}</h2>
     <h2>
       {{ $store.getters.more20stu }}
@@ -35,6 +38,18 @@ export default {
     },
     subtraction() {
       this.$store.commit("decrement");
+    },
+    addCount(count) {
+      //携带参数，官网名称提交Payload
+      this.$store.commit("incrementCount", count);
+    },
+    addStu() {
+      const stu = {
+        id: 114,
+        name: "alan",
+        age: 35,
+      };
+      this.$store.commit("addStu", stu);
     },
   },
 };
