@@ -41,7 +41,12 @@ export default {
     },
     addCount(count) {
       //携带参数，官网名称提交Payload
-      this.$store.commit("incrementCount", count);
+      // this.$store.commit("incrementCount", count);
+      //对象风格的提交方式
+      this.$store.commit({
+        type: "incrementCount",
+        count,
+      });
     },
     addStu() {
       const stu = {

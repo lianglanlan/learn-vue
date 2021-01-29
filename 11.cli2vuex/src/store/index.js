@@ -33,8 +33,13 @@ const store = new Vuex.Store({
         decrement(state) {
             state.counter--
         },
-        incrementCount(state, count) {
-            state.counter += count
+        // incrementCount(state, count) {
+        //     console.log(count)
+        //     //使用普通提交方式，这里count是数字。使用对象风格的提交方式，这里的count是个对象。
+        //     // state.counter += count
+        // },
+        incrementCount(state, payload) {
+            state.counter += payload.count
         },
         addStu(state, stu) {
             state.students.push(stu)
