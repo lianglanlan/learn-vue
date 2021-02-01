@@ -32,7 +32,15 @@ axios.all([axios({
     type: 'pop',
     page: 5
   }
-})]).then(results => {
-  console.log(results)
-  //results为数组类型，results[0]为第一个请求结果，results[1]为第一个请求结果
-})
+})])
+  /*
+    .then(results => {
+      console.log(results)
+      //results为数组类型，results[0]为第一个请求结果，results[1]为第一个请求结果
+    })
+  */
+  //可以直接使用spread展开两个请求结果
+  .then(axios.spread((res1, res2) => {
+    console.log(res1)
+    console.log(res2)
+  }))
