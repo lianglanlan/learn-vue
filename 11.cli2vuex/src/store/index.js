@@ -67,9 +67,9 @@ const store = new Vuex.Store({
         }
     },
     actions: {
-        aChangeAge(context, payload) {
+        aChangeAge({ commit }, payload) {
             setTimeout(() => {
-                context.commit('changeAge')
+                commit('changeAge')
                 console.log(payload)
             }, 100)
         }
