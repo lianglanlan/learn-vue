@@ -21,6 +21,12 @@
     <button @click="addAddress">添加info地址属性</button>
     <button @click="deletePro">删除属性</button>
     <button @click="aChangeAge">异步修改属性</button>
+    <h2>modules中的内容 {{ $store.state.a.name }}</h2>
+    <button @click="updateName">修改modules中的内容</button>
+    <h2>{{ $store.getters.fullname }}</h2>
+    <h2>{{ $store.getters.fullname2 }}</h2>
+    <h2>{{ $store.getters.fullname3 }}</h2>
+    <button @click="asyncUpdateName">异步修改名字</button>
   </div>
 </template>
 
@@ -76,6 +82,12 @@ export default {
       this.$store.dispatch("aChangeAge", "我是payload").then((res) => {
         console.log(res);
       });
+    },
+    updateName() {
+      this.$store.commit("updateName", "huge");
+    },
+    asyncUpdateName() {
+      this.$store.dispatch("aChangeAge");
     },
   },
 };
