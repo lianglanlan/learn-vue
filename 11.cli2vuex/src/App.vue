@@ -20,6 +20,7 @@
     <button @click="changeAge">改变info年龄</button>
     <button @click="addAddress">添加info地址属性</button>
     <button @click="deletePro">删除属性</button>
+    <button @click="aChangeAge">异步修改属性</button>
   </div>
 </template>
 
@@ -70,6 +71,9 @@ export default {
     },
     deletePro() {
       this.$store.commit("deletePro");
+    },
+    aChangeAge() {
+      this.$store.dispatch("aChangeAge");
     },
   },
 };
