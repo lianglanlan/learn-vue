@@ -22,3 +22,17 @@ axios({
     page: 1
   }
 }).then(res => console.log(res))
+
+//axios发送并发请求
+axios.all([axios({
+  url: 'http://123.207.32.32:8000/home/multidata'
+}), axios({
+  url: 'http://123.207.32.32:8000/home/data',
+  params: {
+    type: 'pop',
+    page: 5
+  }
+})]).then(results => {
+  console.log(results)
+  //results为数组类型，results[0]为第一个请求结果，results[1]为第一个请求结果
+})
