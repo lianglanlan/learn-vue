@@ -1,131 +1,45 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { INCREMENT } from './mutations-type'
+import mutations from './mutations'
+import actions from './actions'
+import getters from './getters'
+import moduleA from './modules/moduleA'
 
 Vue.use(Vuex)
 
-const moduleA = {
-    state: {
-        name: 'jim'
-    },
-    mutations: {
-        updateName(state, payload) {
-            state.name = payload
+const state = {
+    counter: 0,
+    students: [
+        {
+            id: 110,
+            name: 'lanlan',
+            age: 18
+        }, {
+            id: 111,
+            name: 'lisi',
+            age: 20
+        }, {
+            id: 112,
+            name: 'zhangsan',
+            age: 18
+        }, {
+            id: 113,
+            name: 'james',
+            age: 23
         }
-    },
-    actions: {
-        aChangeAge(context) {   //context只能调本模块内的东西
-            setTimeout(() => {
-                context.commit('updateName', '王五')
-            }, 1000)
-        }
-    },
-    getters: {
-        fullname(state) {
-            return state.name + '111'
-        },
-        fullname2(state, getters) {
-            return getters.fullname + '222'
-        },
-        fullname3(state, getters, rootState) {
-            return getters.fullname2 + rootState.counter
-        }
+    ],
+    info: {
+        name: 'lan',
+        age: 18
     }
 }
 
 const store = new Vuex.Store({
-    state: {
-        counter: 0,
-        students: [
-            {
-                id: 110,
-                name: 'lanlan',
-                age: 18
-            }, {
-                id: 111,
-                name: 'lisi',
-                age: 20
-            }, {
-                id: 112,
-                name: 'zhangsan',
-                age: 18
-            }, {
-                id: 113,
-                name: 'james',
-                age: 23
-            }
-        ],
-        info: {
-            name: 'lan',
-            age: 18
-        }
-    },
-    mutations: {
-        [INCREMENT](state) {
-            state.counter++
-        },
-        decrement(state) {
-            state.counter--
-        },
-        // incrementCount(state, count) {
-        //     console.log(count)
-        //     //使用普通提交方式，这里count是数字。使用对象风格的提交方式，这里的count是个对象。
-        //     // state.counter += count
-        // },
-        incrementCount(state, payload) {
-            state.counter += payload.count
-        },
-        addStu(state, stu) {
-            state.students.push(stu)
-        },
-        changeAge(state) {
-            state.info.age = 16
-            //使用异步修改
-            //错误代码
-            // setTimeout(() => {
-            //     state.info.age = 16     //执行后，页面中变化了，devtool调试工具并没有发生变化，所以，mutation必须是同步函数
-            // }, 100)
-        },
-        addAddress(state) {
-            // state.info.address = '中国' //界面不会发生改变
-            Vue.set(state.info, 'address', '中国')
-        },
-        deletePro(state) {
-            Vue.delete(state.info, 'age')
-        }
-    },
-    actions: {
-        aChangeAge({ commit }, payload) {
-            /*
-            setTimeout(() => {
-                commit('changeAge')
-                console.log(payload)
-            }, 100)
-            */
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    commit('changeAge')
-                    console.log(payload)
-                    resolve('里面执行完了')
-                }, 100)
-            })
-        }
-    },
-    getters: {
-        powerCounter(state) {
-            return state.counter * state.counter
-        },
-        more20stu(state) {
-            return state.students.filter((stu) => stu.age > 20);
-        },
-        more20stuLength(state, getters) {
-            return getters.more20stu.length
-        },
-        moreAgeStu(state) {
-            return age => state.students.filter((stu) => stu.age > age)
-        },
-    },
+    state,
+    mutations,
+    actions,
+    getters,
     modules: {
         a: moduleA
     }
