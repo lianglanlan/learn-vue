@@ -13,8 +13,11 @@ new Vue({
   store
 })
 
+axios.defaults.baseURL = 'http://123.207.32.32:8000'
+axios.defaults.timeout = 5000
+
 axios({
-  url: 'http://123.207.32.32:8000/home/multidata',
+  url: '/home/multidata',
   method: 'get', //默认为get请求
   //参数
   params: {
@@ -25,9 +28,9 @@ axios({
 
 //axios发送并发请求
 axios.all([axios({
-  url: 'http://123.207.32.32:8000/home/multidata'
+  url: '/home/multidata'
 }), axios({
-  url: 'http://123.207.32.32:8000/home/data',
+  url: '/home/data',
   params: {
     type: 'pop',
     page: 5
