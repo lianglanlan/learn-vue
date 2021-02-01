@@ -25,6 +25,8 @@
 
 <script>
 import HelloVuex from "./components/HelloVuex";
+import { INCREMENT } from "./store/mutations-type";
+
 export default {
   name: "App",
   components: {
@@ -38,7 +40,7 @@ export default {
   computed: {},
   methods: {
     addition() {
-      this.$store.commit("increment");
+      this.$store.commit(INCREMENT);
     },
     subtraction() {
       this.$store.commit("decrement");
