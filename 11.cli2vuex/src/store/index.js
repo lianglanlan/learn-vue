@@ -51,7 +51,11 @@ const store = new Vuex.Store({
             state.students.push(stu)
         },
         changeAge(state) {
-            state.info.age = 16
+            // state.info.age = 16
+            //使用异步修改
+            setTimeout(() => {
+                state.info.age = 16     //执行后，页面中变化了，devtool调试工具并没有发生变化，所以，mutation必须是同步函数
+            }, 100)
         },
         addAddress(state) {
             // state.info.address = '中国' //界面不会发生改变
