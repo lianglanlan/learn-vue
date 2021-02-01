@@ -73,7 +73,9 @@ export default {
       this.$store.commit("deletePro");
     },
     aChangeAge() {
-      this.$store.dispatch("aChangeAge", "我是payload");
+      this.$store.dispatch("aChangeAge", "我是payload").then((res) => {
+        console.log(res);
+      });
     },
   },
 };
