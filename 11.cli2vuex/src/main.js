@@ -74,3 +74,11 @@ const instance2 = axios.create({
   baseURL: 'http://123.207.35.32:8888',
   timeout: 5000,
 })
+
+import { request } from './network/request'
+
+request({
+  url: '/home/multidata'
+}).then(res => {
+  console.log(res)
+})
