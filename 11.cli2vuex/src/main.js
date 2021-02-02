@@ -47,3 +47,30 @@ axios.all([axios({
     console.log(res1)
     console.log(res2)
   }))
+
+//创建axios实例
+const instance1 = axios.create({
+  baseURL: 'http://123.207.32.32:8000',
+  timeout: 1000,
+})
+
+instance1({
+  url: '/home/multidata'
+}).then(res => {
+  console.log(res)
+})
+
+instance1({
+  url: '/home/data',
+  params: {
+    type: 'pop',
+    page: 5
+  }
+}).then(res => {
+  console.log(res)
+})
+//可以创建不同的实例
+const instance2 = axios.create({
+  baseURL: 'http://123.207.35.32:8888',
+  timeout: 5000,
+})
