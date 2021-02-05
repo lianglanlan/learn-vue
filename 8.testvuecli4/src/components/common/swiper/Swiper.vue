@@ -165,6 +165,28 @@ export default {
       //移动完成后重新开启定时器
       this.startTimer();
     },
+    /**
+     * 控制上一个, 下一个
+     */
+    previous: function () {
+      this.changeItem(-1);
+    },
+
+    next: function () {
+      this.changeItem(1);
+    },
+
+    changeItem: function (num) {
+      // 1.移除定时器
+      this.stopTimer();
+
+      // 2.修改index和位置
+      this.currentIndex += num;
+      this.scrollContent(-this.currentIndex * this.totalWidth);
+
+      // 3.添加定时器
+      this.startTimer();
+    },
   },
   mounted() {
     //操作Dom，在前后添加slide
