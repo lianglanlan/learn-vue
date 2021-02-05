@@ -101,7 +101,7 @@ export default {
      */
     handleDom() {
       let swiperEl = document.querySelector(".swiper");
-      let slidesEls = document.getElementsByClassName("slide");
+      let slidesEls = swiperEl.getElementsByClassName("slide");
 
       //保存个数
       this.slideCount = slidesEls.length;
@@ -111,7 +111,7 @@ export default {
         let cloneFirst = slidesEls[0].cloneNode(true);
         let cloneLast = slidesEls[this.slideCount - 1].cloneNode(true);
         swiperEl.insertBefore(cloneLast, slidesEls[0]);
-        swiperEl.append(cloneFirst);
+        swiperEl.appendChild(cloneFirst);
         this.totalWidth = swiperEl.offsetWidth;
         this.swiperStyle = swiperEl.style;
       }
@@ -133,7 +133,7 @@ export default {
     touchMove(e) {
       //计算用户拖动的距离
       this.currentX = e.touches[0].pageX;
-      this.distance = this.currentX = this.startX;
+      this.distance = this.currentX - this.startX;
       let currentPosition = -this.currentIndex * this.totalWidth;
       let moveDistance = this.distance + currentPosition;
 
