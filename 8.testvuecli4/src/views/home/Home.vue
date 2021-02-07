@@ -6,10 +6,13 @@
     <home-swiper :banners="banners"></home-swiper>
     <recommend-view :recommends="recommends"></recommend-view>
     <feature-view></feature-view>
+    <tab-control :titles="['流行', '新款', '精选']"></tab-control>
   </div>
 </template>
 <script>
 import NavBar from "components/common/navbar/NavBar";
+import TabControl from "../../components/content/tabControl/TabControl";
+
 import HomeSwiper from "./childComps/HomeSwiper";
 import RecommendView from "./childComps/RecommendView";
 import FeatureView from "./childComps/FeatureView";
@@ -27,6 +30,7 @@ export default {
   },
   components: {
     NavBar,
+    TabControl,
     HomeSwiper,
     RecommendView,
     FeatureView,
