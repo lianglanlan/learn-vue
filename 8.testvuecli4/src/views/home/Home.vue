@@ -6,7 +6,11 @@
     <home-swiper :banners="banners"></home-swiper>
     <recommend-view :recommends="recommends"></recommend-view>
     <feature-view></feature-view>
-    <tab-control :titles="['流行', '新款', '精选']"></tab-control>
+    <tab-control
+      :titles="['流行', '新款', '精选']"
+      class="tab-control"
+    ></tab-control>
+    <div style="height: 3000px; background-color: pink">fsafdsafda</div>
   </div>
 </template>
 <script>
@@ -56,5 +60,10 @@ export default {
   background-color: var(--color-tint);
   font-weight: 700;
   color: #fff;
+}
+
+.tab-control {
+  position: sticky;
+  top: 44px;
 }
 </style>
