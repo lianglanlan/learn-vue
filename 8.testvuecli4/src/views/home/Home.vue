@@ -21,7 +21,7 @@ import HomeSwiper from "./childComps/HomeSwiper";
 import RecommendView from "./childComps/RecommendView";
 import FeatureView from "./childComps/FeatureView";
 
-import { getHomeMultidata } from "network/home";
+import { getHomeMultidata, getHomeData } from "network/home";
 
 export default {
   name: "Home",
@@ -58,6 +58,10 @@ export default {
     getHomeMultidata().then((res) => {
       this.banners = res.data.banner.list;
       this.recommends = res.data.recommend.list;
+    });
+    //请求商品数据
+    getHomeData("pop", 1).then((res) => {
+      console.log(res);
     });
   },
 };
