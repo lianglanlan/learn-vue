@@ -35,7 +35,7 @@ export default {
           page: 0,
           list: [],
         },
-        news: {
+        new: {
           page: 0,
           list: [],
         },
@@ -55,14 +55,26 @@ export default {
   },
   created() {
     //请求数据
-    getHomeMultidata().then((res) => {
-      this.banners = res.data.banner.list;
-      this.recommends = res.data.recommend.list;
-    });
+    this.getHomeMultidata();
     //请求商品数据
-    getHomeData("pop", 1).then((res) => {
-      console.log(res);
-    });
+    this.getHomeGoods("pop");
+    this.getHomeGoods("new");
+    this.getHomeGoods("sell");
+  },
+  methods: {
+    getHomeMultidata() {
+      getHomeMultidata().then((res) => {
+        this.banners = res.data.banner.list;
+        this.recommends = res.data.recommend.list;
+      });
+    },
+    getHomeGoods(type) {
+      const page = this.goods[type].page + 1;
+      getHomeData(type, page).then((res) => {
+        this.goods[type].list.push(...res.data.list);
+        this.goods[type].page++;
+      });
+    },
   },
 };
 </script>
