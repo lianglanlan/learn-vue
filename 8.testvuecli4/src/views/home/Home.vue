@@ -10,12 +10,13 @@
       :titles="['流行', '新款', '精选']"
       class="tab-control"
     ></tab-control>
-    <div style="height: 3000px; background-color: pink">fsafdsafda</div>
+    <goods-list :goods="goods['pop'].list"></goods-list>
   </div>
 </template>
 <script>
 import NavBar from "components/common/navbar/NavBar";
-import TabControl from "../../components/content/tabControl/TabControl";
+import TabControl from "components/content/tabControl/TabControl";
+import GoodsList from "../../components/content/goods/GoodsList";
 
 import HomeSwiper from "./childComps/HomeSwiper";
 import RecommendView from "./childComps/RecommendView";
@@ -49,6 +50,7 @@ export default {
   components: {
     NavBar,
     TabControl,
+    GoodsList,
     HomeSwiper,
     RecommendView,
     FeatureView,
