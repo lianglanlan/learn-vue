@@ -11,7 +11,7 @@
       class="tab-control"
       @tabClick="tabClick"
     ></tab-control>
-    <goods-list :goods="goods[currentType].list"></goods-list>
+    <goods-list :goods="showGoods"></goods-list>
   </div>
 </template>
 <script>
@@ -96,6 +96,11 @@ export default {
         case 2:
           this.currentType = "sell";
       }
+    },
+  },
+  computed: {
+    showGoods() {
+      return this.goods[this.currentType].list;
     },
   },
 };
