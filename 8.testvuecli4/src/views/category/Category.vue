@@ -1010,7 +1010,13 @@ import BScroll from "@better-scroll/core";
 
 export default {
   mounted() {
-    new BScroll(".wrapper", {});
+    const bscroll = new BScroll(".wrapper", {
+      probeType: 3,
+      //决定是否派发scroll事件，具体可查看官网
+    });
+    bscroll.on("scroll", (position) => {
+      console.log(position);
+    });
   },
 };
 </script>
