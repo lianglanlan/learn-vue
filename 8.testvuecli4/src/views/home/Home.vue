@@ -14,6 +14,7 @@
       ></tab-control>
       <goods-list :goods="showGoods"></goods-list>
     </scroll>
+    <back-top @click.native="backClick"></back-top>
   </div>
 </template>
 <script>
@@ -21,6 +22,7 @@ import NavBar from "components/common/navbar/NavBar";
 import Scroll from "components/common/scroll/Scroll";
 import TabControl from "components/content/tabControl/TabControl";
 import GoodsList from "components/content/goods/GoodsList";
+import BackTop from '../../components/content/backTop/BackTop'
 
 import HomeSwiper from "./childComps/HomeSwiper";
 import RecommendView from "./childComps/RecommendView";
@@ -60,6 +62,7 @@ export default {
     HomeSwiper,
     RecommendView,
     FeatureView,
+    BackTop,
   },
   created() {
     //请求数据
@@ -101,6 +104,9 @@ export default {
           this.currentType = "sell";
       }
     },
+    backClick(){
+      console.log('点击了')
+    }
   },
   computed: {
     showGoods() {
