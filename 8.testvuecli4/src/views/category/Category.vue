@@ -2,7 +2,7 @@
   <!-- ul>li{分类列表$}*1000 -->
   <div class="wrapper">
     <ul class="content">
-      <li>分类列表1</li>
+      <li @click="btnClick">点击</li>
       <li>分类列表2</li>
       <li>分类列表3</li>
       <li>分类列表4</li>
@@ -1013,10 +1013,17 @@ export default {
     const bscroll = new BScroll(".wrapper", {
       probeType: 3,
       //决定是否派发scroll事件，具体可查看官网
+      click: true,
+      //设置后btnClick事件才能执行
     });
     bscroll.on("scroll", (position) => {
       console.log(position);
     });
+  },
+  methods: {
+    btnClick() {
+      console.log("点击了");
+    },
   },
 };
 </script>
