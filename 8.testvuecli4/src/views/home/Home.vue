@@ -3,21 +3,24 @@
     <nav-bar class="nav-bar">
       <div slot="center">购物街</div>
     </nav-bar>
-    <home-swiper :banners="banners"></home-swiper>
-    <recommend-view :recommends="recommends"></recommend-view>
-    <feature-view></feature-view>
-    <tab-control
-      :titles="['流行', '新款', '精选']"
-      class="tab-control"
-      @tabClick="tabClick"
-    ></tab-control>
-    <goods-list :goods="showGoods"></goods-list>
+    <scroll class="content">
+      <home-swiper :banners="banners"></home-swiper>
+      <recommend-view :recommends="recommends"></recommend-view>
+      <feature-view></feature-view>
+      <tab-control
+        :titles="['流行', '新款', '精选']"
+        class="tab-control"
+        @tabClick="tabClick"
+      ></tab-control>
+      <goods-list :goods="showGoods"></goods-list>
+    </scroll>
   </div>
 </template>
 <script>
 import NavBar from "components/common/navbar/NavBar";
+import Scroll from "components/common/scroll/Scroll";
 import TabControl from "components/content/tabControl/TabControl";
-import GoodsList from "../../components/content/goods/GoodsList";
+import GoodsList from "components/content/goods/GoodsList";
 
 import HomeSwiper from "./childComps/HomeSwiper";
 import RecommendView from "./childComps/RecommendView";
@@ -51,6 +54,7 @@ export default {
   },
   components: {
     NavBar,
+    Scroll,
     TabControl,
     GoodsList,
     HomeSwiper,
@@ -122,5 +126,13 @@ export default {
 .tab-control {
   position: sticky;
   top: 44px;
+}
+
+.content {
+  /* height: calc(100vh - 93px); */
+  overflow: hidden;
+  position: absolute;
+  top: 44px;
+  bottom: 49px;
 }
 </style>
