@@ -3,7 +3,7 @@
     <nav-bar class="nav-bar">
       <div slot="center">购物街</div>
     </nav-bar>
-    <scroll class="content">
+    <scroll class="content" ref="scroll">
       <home-swiper :banners="banners"></home-swiper>
       <recommend-view :recommends="recommends"></recommend-view>
       <feature-view></feature-view>
@@ -105,7 +105,7 @@ export default {
       }
     },
     backClick(){
-      console.log('点击了')
+      this.$refs.scroll.scroll.scrollTo(0,0,500)
     }
   },
   computed: {
