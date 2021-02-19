@@ -47,6 +47,9 @@ export default {
     scrollTo(x, y, time = 300) {
       this.scroll.scrollTo(x, y, time);
     },
+    finishPullUp() {
+      this.scroll.finishPullUp();
+    },
   },
 };
 </script>

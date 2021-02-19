@@ -115,7 +115,8 @@ export default {
       this.isShowBackTop = -position.y > 1000;
     },
     loadMore() {
-      console.log("上拉到底");
+      this.getHomeGoods(this.currentType);
+      this.$refs.scroll.finishPullUp();
     },
   },
   computed: {
