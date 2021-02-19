@@ -19,16 +19,23 @@ export default {
       type: Number,
       default: 0,
     },
+    pullUpLoad: {
+      type: Boolean,
+      default: false,
+    },
   },
   mounted() {
     this.scroll = new BScroll(this.$refs.wrapper, {
       probeType: this.probeType,
       click: true,
-      pullUpLoad: true,
+      pullUpLoad: this.pullUpLoad,
       observeDOM: true,
     });
     this.scroll.on("scroll", (position) => {
       this.$emit("scroll", position);
+    });
+    this.scroll.on("pullingUp", () => {
+      this.$emit("pullingUp");
     });
   },
   data() {
