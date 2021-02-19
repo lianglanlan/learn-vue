@@ -10,7 +10,7 @@
       <tab-control :titles="['流行', '新款', '精选']" class="tab-control" @tabClick="tabClick"></tab-control>
       <goods-list :goods="showGoods"></goods-list>
     </scroll>
-    <back-top @click.native="backClick"></back-top>
+    <back-top @click.native="backClick" v-show="isShowBackTop"></back-top>
   </div>
 </template>
 <script>
@@ -48,6 +48,7 @@ export default {
         },
       },
       currentType: "pop",
+      isShowBackTop: false,
     };
   },
   components: {
@@ -104,7 +105,7 @@ export default {
       this.$refs.scroll.scrollTo(0, 0, 500);
     },
     contentScroll(position) {
-      console.log(position);
+      this.isShowBackTop = -position.y > 1000;
     },
   },
   computed: {
