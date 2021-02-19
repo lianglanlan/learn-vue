@@ -3,15 +3,11 @@
     <nav-bar class="nav-bar">
       <div slot="center">购物街</div>
     </nav-bar>
-    <scroll class="content" ref="scroll">
+    <scroll class="content" ref="scroll" :probe-type="3" @scroll="contentScroll">
       <home-swiper :banners="banners"></home-swiper>
       <recommend-view :recommends="recommends"></recommend-view>
       <feature-view></feature-view>
-      <tab-control
-        :titles="['流行', '新款', '精选']"
-        class="tab-control"
-        @tabClick="tabClick"
-      ></tab-control>
+      <tab-control :titles="['流行', '新款', '精选']" class="tab-control" @tabClick="tabClick"></tab-control>
       <goods-list :goods="showGoods"></goods-list>
     </scroll>
     <back-top @click.native="backClick"></back-top>
@@ -106,6 +102,9 @@ export default {
     },
     backClick() {
       this.$refs.scroll.scrollTo(0, 0, 500);
+    },
+    contentScroll(position) {
+      console.log(position);
     },
   },
   computed: {

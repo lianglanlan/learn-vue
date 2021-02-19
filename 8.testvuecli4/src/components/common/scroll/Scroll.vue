@@ -14,12 +14,21 @@ BScroll.use(ObserveDOM);
 BScroll.use(Pullup);
 
 export default {
+  props: {
+    probeType: {
+      type: Number,
+      default: 0,
+    },
+  },
   mounted() {
     this.scroll = new BScroll(this.$refs.wrapper, {
-      probeType: 3,
+      probeType: this.probeType,
       click: true,
       pullUpLoad: true,
       observeDOM: true,
+    });
+    this.scroll.on("scroll", (position) => {
+      this.$emit("scroll", position);
     });
   },
   data() {
