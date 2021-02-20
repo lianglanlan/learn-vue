@@ -9,9 +9,11 @@
 import BScroll from "@better-scroll/core";
 import Pullup from "@better-scroll/pull-up";
 import ObserveDOM from "@better-scroll/observe-dom";
+import ObserveImage from "@better-scroll/observe-image";
 
 BScroll.use(ObserveDOM);
 BScroll.use(Pullup);
+BScroll.use(ObserveImage);
 
 export default {
   props: {
@@ -23,6 +25,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    observeImage: {
+      type: Boolean,
+      default: false,
+    },
   },
   mounted() {
     this.scroll = new BScroll(this.$refs.wrapper, {
@@ -30,6 +36,7 @@ export default {
       click: true,
       pullUpLoad: this.pullUpLoad,
       observeDOM: true,
+      observeImage: this.observeImage,
     });
     this.scroll.on("scroll", (position) => {
       this.$emit("scroll", position);
