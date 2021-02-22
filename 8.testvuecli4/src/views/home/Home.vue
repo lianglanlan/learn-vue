@@ -82,8 +82,10 @@ export default {
     this.getHomeGoods("sell");
   },
   mounted() {
+    const refresh = this.debounce(this.$refs.scroll.refresh, 200);
+
     this.$bus.$on("itemImageLoad", () => {
-      this.$refs.scroll && this.$refs.scroll.refresh();
+      this.$refs.scroll && refresh();
     });
   },
   methods: {
@@ -127,6 +129,17 @@ export default {
     loadMore() {
       this.getHomeGoods(this.currentType);
       this.$refs.scroll.finishPullUp();
+    },
+    debounce(func, delay) {
+      let timer = null;
+      return function (...args) {
+        if (timer) {
+          clearTimeout(timer);
+        }
+        timer = setTimeout(() => {
+          func.apply(this, args);
+        }, delay);
+      };
     },
   },
   computed: {
