@@ -80,8 +80,10 @@ export default {
     this.getHomeGoods("pop");
     this.getHomeGoods("new");
     this.getHomeGoods("sell");
+  },
+  mounted() {
     this.$bus.$on("itemImageLoad", () => {
-      this.$refs.scroll.refresh();
+      this.$refs.scroll && this.$refs.scroll.refresh();
     });
   },
   methods: {
