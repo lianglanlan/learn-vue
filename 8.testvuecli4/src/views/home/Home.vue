@@ -37,6 +37,7 @@ import RecommendView from "./childComps/RecommendView";
 import FeatureView from "./childComps/FeatureView";
 
 import { getHomeMultidata, getHomeData } from "network/home";
+import { debounce } from "../../common/utils";
 
 export default {
   name: "Home",
@@ -82,7 +83,7 @@ export default {
     this.getHomeGoods("sell");
   },
   mounted() {
-    const refresh = this.debounce(this.$refs.scroll.refresh, 200);
+    const refresh = debounce(this.$refs.scroll.refresh, 200);
 
     this.$bus.$on("itemImageLoad", () => {
       this.$refs.scroll && refresh();
@@ -129,17 +130,6 @@ export default {
     loadMore() {
       this.getHomeGoods(this.currentType);
       this.$refs.scroll.finishPullUp();
-    },
-    debounce(func, delay) {
-      let timer = null;
-      return function (...args) {
-        if (timer) {
-          clearTimeout(timer);
-        }
-        timer = setTimeout(() => {
-          func.apply(this, args);
-        }, delay);
-      };
     },
   },
   computed: {
