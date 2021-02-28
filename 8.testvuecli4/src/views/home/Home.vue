@@ -3,6 +3,13 @@
     <nav-bar class="nav-bar">
       <div slot="center">购物街</div>
     </nav-bar>
+    <tab-control
+      :titles="['流行', '新款', '精选']"
+      class="tab-control"
+      @tabClick="tabClick"
+      ref="tabControl"
+      v-show="isTabFixed"
+    ></tab-control>
     <scroll
       class="content"
       ref="scroll"
@@ -67,6 +74,7 @@ export default {
       currentType: "pop",
       isShowBackTop: false,
       tabOffsetTop: 0,
+      isTabFixed: false,
     };
   },
   components: {
@@ -136,7 +144,10 @@ export default {
       this.$refs.scroll.scrollTo(0, 0, 500);
     },
     contentScroll(position) {
+      //判断返回顶部是否显示
       this.isShowBackTop = -position.y > 1000;
+      //判断tabcontrol是都吸顶
+      this.isTabFixed = -position.y > this.tabOffsetTop;
     },
     loadMore() {
       this.getHomeGoods(this.currentType);
@@ -155,21 +166,12 @@ export default {
 </script>
 <style scoped>
 #home {
-  padding: 44px 0 49px;
+  padding: 0 0 49px;
 }
 .nav-bar {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  right: 0;
   background-color: var(--color-tint);
   font-weight: 700;
   color: #fff;
-}
-
-.tab-control {
-  position: sticky;
-  top: 44px;
 }
 
 .content {
@@ -178,5 +180,9 @@ export default {
   position: absolute;
   top: 44px;
   bottom: 49px;
+}
+
+.tab-control {
+  position: relative;
 }
 </style>
