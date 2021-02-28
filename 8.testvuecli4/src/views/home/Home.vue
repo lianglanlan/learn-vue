@@ -19,6 +19,7 @@
         :titles="['流行', '新款', '精选']"
         class="tab-control"
         @tabClick="tabClick"
+        ref="tabControl"
       ></tab-control>
       <goods-list :goods="showGoods"></goods-list>
     </scroll>
@@ -62,6 +63,7 @@ export default {
       },
       currentType: "pop",
       isShowBackTop: false,
+      tabOffsetTop: 0,
     };
   },
   components: {
@@ -88,6 +90,11 @@ export default {
     this.$bus.$on("itemImageLoad", () => {
       this.$refs.scroll && refresh();
     });
+
+    //获取tabcontrol的offsetTop
+    //this.$refs.tabControl获取的组件
+    //可以使用$el获取组件中的元素
+    console.log(this.$refs.tabControl.$el.offsetTop);
   },
   methods: {
     /**
