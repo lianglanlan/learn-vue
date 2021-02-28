@@ -12,7 +12,10 @@
       :observe-mage="true"
       @pullingUp="loadMore"
     >
-      <home-swiper :banners="banners"></home-swiper>
+      <home-swiper
+        :banners="banners"
+        @swiperImageLoad="swiperImageLoad"
+      ></home-swiper>
       <recommend-view :recommends="recommends"></recommend-view>
       <feature-view></feature-view>
       <tab-control
@@ -94,6 +97,7 @@ export default {
     //获取tabcontrol的offsetTop
     //this.$refs.tabControl获取的组件
     //可以使用$el获取组件中的元素
+    //在这里取的值由于前面的swiper图片加载过慢，导致这里的值不准确，所以考虑在swiper图片加载完后再取值
     console.log(this.$refs.tabControl.$el.offsetTop);
   },
   methods: {
@@ -137,6 +141,9 @@ export default {
     loadMore() {
       this.getHomeGoods(this.currentType);
       this.$refs.scroll.finishPullUp();
+    },
+    swiperImageLoad() {
+      this.tabOffsetTop = this.$refs.tabControl.$el.offsetTop;
     },
   },
   computed: {
