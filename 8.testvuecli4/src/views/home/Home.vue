@@ -7,7 +7,7 @@
       :titles="['流行', '新款', '精选']"
       class="tab-control"
       @tabClick="tabClick"
-      ref="tabControl"
+      ref="tabControl1"
       v-show="isTabFixed"
     ></tab-control>
     <scroll
@@ -29,7 +29,7 @@
         :titles="['流行', '新款', '精选']"
         class="tab-control"
         @tabClick="tabClick"
-        ref="tabControl"
+        ref="tabControl2"
       ></tab-control>
       <goods-list :goods="showGoods"></goods-list>
     </scroll>
@@ -139,6 +139,8 @@ export default {
         case 2:
           this.currentType = "sell";
       }
+      this.$refs.tabControl1.currentIndex = index;
+      this.$refs.tabControl2.currentIndex = index;
     },
     backClick() {
       this.$refs.scroll.scrollTo(0, 0, 500);
@@ -154,7 +156,7 @@ export default {
       this.$refs.scroll.finishPullUp();
     },
     swiperImageLoad() {
-      this.tabOffsetTop = this.$refs.tabControl.$el.offsetTop;
+      this.tabOffsetTop = this.$refs.tabControl2.$el.offsetTop;
     },
   },
   computed: {
