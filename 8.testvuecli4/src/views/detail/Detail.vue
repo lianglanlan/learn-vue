@@ -11,6 +11,7 @@ import DetailSwiper from "./childComps/DetailSwiper";
 import { getDetail } from "../../network/detail";
 
 export default {
+  name: "Detail",
   components: {
     DetailNavBar,
     DetailSwiper,

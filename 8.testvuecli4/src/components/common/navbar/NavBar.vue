@@ -26,6 +26,7 @@ export default {
   height: 44px;
   line-height: 44px;
   text-align: center;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
 
 .nav-left {
