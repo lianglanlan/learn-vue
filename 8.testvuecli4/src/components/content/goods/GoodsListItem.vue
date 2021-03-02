@@ -24,6 +24,7 @@ export default {
     },
     itemClick() {
       //跳转到详情页
+      this.$router.push("/detail/" + this.goodsItem.iid);
     },
   },
 };
