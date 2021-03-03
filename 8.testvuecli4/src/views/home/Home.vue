@@ -16,7 +16,7 @@
       :probe-type="3"
       @scroll="contentScroll"
       :pull-up-load="true"
-      :observe-mage="true"
+      :observe-Image="true"
       @pullingUp="loadMore"
     >
       <home-swiper
