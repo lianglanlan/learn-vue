@@ -5,6 +5,7 @@
       <detail-swiper :top-images="topImages"></detail-swiper>
       <detail-base-info :goods="goods"></detail-base-info>
       <detail-shop-info :shop="shop"></detail-shop-info>
+      <detail-goods-info :detailInfo="detailInfo"></detail-goods-info>
     </scroll>
   </div>
 </template>
@@ -13,6 +14,7 @@ import DetailNavBar from "./childComps/DetailNavBar";
 import DetailSwiper from "./childComps/DetailSwiper";
 import DetailBaseInfo from "./childComps/DetailBaseInfo";
 import DetailShopInfo from "./childComps/DetailShopInfo";
+import DetailGoodsInfo from "./childComps/DetailGoodsInfo";
 
 import Scroll from "../../components/common/scroll/Scroll";
 
@@ -25,6 +27,7 @@ export default {
     DetailSwiper,
     DetailBaseInfo,
     DetailShopInfo,
+    DetailGoodsInfo,
     Scroll,
   },
   data() {
@@ -33,6 +36,7 @@ export default {
       topImages: [],
       goods: {},
       shop: {},
+      detailInfo: {},
     };
   },
   created() {
@@ -53,6 +57,9 @@ export default {
       );
       //获取店铺信息
       this.shop = new Shop(data.shopInfo);
+
+      //急脾气商品详细信息
+      this.detailInfo = data.detailInfo;
     });
   },
 };
