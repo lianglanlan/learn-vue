@@ -1,11 +1,11 @@
 <template>
   <div id="detail">
     <detail-nav-bar></detail-nav-bar>
-    <scroll class="detail-content">
+    <scroll class="detail-content" ref="scroll">
       <detail-swiper :top-images="topImages"></detail-swiper>
       <detail-base-info :goods="goods"></detail-base-info>
       <detail-shop-info :shop="shop"></detail-shop-info>
-      <detail-goods-info :detailInfo="detailInfo"></detail-goods-info>
+      <detail-goods-info :detailInfo="detailInfo" @imageLoad="imageLoad"></detail-goods-info>
     </scroll>
   </div>
 </template>
@@ -61,6 +61,11 @@ export default {
       //急脾气商品详细信息
       this.detailInfo = data.detailInfo;
     });
+  },
+  methods: {
+    imageLoad() {
+      this.$refs.scroll.refresh();
+    },
   },
 };
 </script>
