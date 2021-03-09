@@ -11,6 +11,28 @@ export function debounce(func, delay) {
     };
 }
 
-export function formatDate() {
+export function formatDate(date, fmt) {
+    if (/(y+)/.test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substring(4 - RegExp.$1.length))
+    }
 
+    let o = {
+        'M+': date.getMonth() + 1,
+        'd+': date.getDate(),
+        'h+': date.getHours(),
+        'm+': date.getMinutes(),
+        's+': date.getSeconds()
+    }
+    for (let k in o) {
+        if (new RegExp(`${k}`).test(fmt)) {
+            fmt = fmt.replace(new RegExp(`${k}`), match => {
+                let str = o[k] + ''
+                if (match.length !== 1) {
+                    str = str.padStart(4, 0).substring(4 - match.length)
+                }
+                return str
+            })
+        }
+    }
+    return fmt
 }
