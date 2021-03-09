@@ -28,7 +28,7 @@ export function formatDate(date, fmt) {
             fmt = fmt.replace(new RegExp(`${k}`), match => {
                 let str = o[k] + ''
                 if (match.length !== 1) {
-                    str = str.padStart(4, 0).substring(4 - match.length)
+                    str = str.padStart(match.length, '0')
                 }
                 return str
             })
