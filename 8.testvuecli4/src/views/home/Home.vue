@@ -48,7 +48,7 @@ import RecommendView from "./childComps/RecommendView";
 import FeatureView from "./childComps/FeatureView";
 
 import { getHomeMultidata, getHomeData } from "network/home";
-import { debounce } from "../../common/utils";
+import { itemImgListener } from "../../common/mixin";
 
 export default {
   name: "Home",
@@ -76,7 +76,6 @@ export default {
       tabOffsetTop: 0,
       isTabFixed: false,
       saveY: 0,
-      itemImgListener: null,
     };
   },
   components: {
@@ -96,20 +95,6 @@ export default {
     this.getHomeGoods("pop");
     this.getHomeGoods("new");
     this.getHomeGoods("sell");
-  },
-  mounted() {
-    const refresh = debounce(this.$refs.scroll.refresh, 200);
-
-    this.itemImgListener = () => {
-      this.$refs.scroll && refresh();
-    };
-    this.$bus.$on("itemImageLoad", this.itemImgListener);
-
-    //获取tabcontrol的offsetTop
-    //this.$refs.tabControl获取的组件
-    //可以使用$el获取组件中的元素
-    //在这里取的值由于前面的swiper图片加载过慢，导致这里的值不准确，所以考虑在swiper图片加载完后再取值
-    // console.log(this.$refs.tabControl.$el.offsetTop);
   },
   methods: {
     /**
@@ -177,6 +162,7 @@ export default {
     //取消全局事件的监听
     this.$bus.$off("itemImageLoad", this.itemImgListener);
   },
+  mixins: [itemImgListener],
 };
 </script>
 <style scoped>

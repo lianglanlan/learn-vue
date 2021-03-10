@@ -27,7 +27,7 @@ import DetailCommentInfo from "./childComps/DetailCommentInfo";
 import Scroll from "../../components/common/scroll/Scroll";
 import GoodsList from "../../components/content/goods/GoodsList";
 
-import { debounce } from "../../common/utils";
+import { itemImgListener } from "../../common/mixin";
 
 import {
   getDetail,
@@ -60,7 +60,6 @@ export default {
       paramInfo: {},
       commentInfo: {},
       recommendList: [],
-      itemImgListener: null,
     };
   },
   created() {
@@ -106,16 +105,10 @@ export default {
       this.$refs.scroll.refresh();
     },
   },
-  mounted() {
-    const refresh = debounce(this.$refs.scroll.refresh, 200);
-    this.itemImgListener = () => {
-      this.$refs.scroll && refresh();
-    };
-    this.$bus.$on("itemImageLoad", this.itemImgListener);
-  },
   destroyed() {
     this.$bus.$off("itemImageLoad", this.itemImgListener);
   },
+  mixins: [itemImgListener],
 };
 </script>
 <style scoped>
