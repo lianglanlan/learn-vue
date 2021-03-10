@@ -11,6 +11,7 @@
       ></detail-goods-info>
       <detail-param-info :param-info="paramInfo"></detail-param-info>
       <detail-comment-info :comment-info="commentInfo"></detail-comment-info>
+      <goods-list :goods="recommendList"></goods-list>
     </scroll>
   </div>
 </template>
@@ -24,6 +25,7 @@ import DetailParamInfo from "./childComps/DetailParamInfo";
 import DetailCommentInfo from "./childComps/DetailCommentInfo";
 
 import Scroll from "../../components/common/scroll/Scroll";
+import GoodsList from "../../components/content/goods/GoodsList";
 
 import {
   getDetail,
@@ -44,6 +46,7 @@ export default {
     DetailParamInfo,
     DetailCommentInfo,
     Scroll,
+    GoodsList,
   },
   data() {
     return {
