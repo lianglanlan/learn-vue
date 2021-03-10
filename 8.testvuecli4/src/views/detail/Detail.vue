@@ -5,7 +5,10 @@
       <detail-swiper :top-images="topImages"></detail-swiper>
       <detail-base-info :goods="goods"></detail-base-info>
       <detail-shop-info :shop="shop"></detail-shop-info>
-      <detail-goods-info :detail-info="detailInfo" @imageLoad="imageLoad"></detail-goods-info>
+      <detail-goods-info
+        :detail-info="detailInfo"
+        @imageLoad="imageLoad"
+      ></detail-goods-info>
       <detail-param-info :param-info="paramInfo"></detail-param-info>
       <detail-comment-info :comment-info="commentInfo"></detail-comment-info>
     </scroll>
@@ -22,7 +25,13 @@ import DetailCommentInfo from "./childComps/DetailCommentInfo";
 
 import Scroll from "../../components/common/scroll/Scroll";
 
-import { getDetail, Goods, Shop, GoodsParams } from "../../network/detail";
+import {
+  getDetail,
+  getRecommend,
+  Goods,
+  Shop,
+  GoodsParams,
+} from "../../network/detail";
 
 export default {
   name: "Detail",
@@ -45,6 +54,7 @@ export default {
       detailInfo: {},
       paramInfo: {},
       commentInfo: {},
+      recommendList: [],
     };
   },
   created() {
@@ -52,7 +62,6 @@ export default {
 
     //根据iid请求详情数据
     getDetail(this.iid).then((res) => {
-      console.log(res);
       const data = res.result;
       //对res做数据分离
       this.topImages = data.itemInfo.topImages;
@@ -79,6 +88,11 @@ export default {
       if (data.rate.cRate !== 0) {
         this.commentInfo = data.rate.list[0];
       }
+    });
+
+    //请求推荐数据
+    getRecommend().then((res) => {
+      this.recommendList = res.data.list;
     });
   },
   methods: {
