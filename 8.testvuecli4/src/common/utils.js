@@ -26,11 +26,7 @@ export function formatDate(date, fmt) {
     for (let k in o) {
         if (new RegExp(`${k}`).test(fmt)) {
             fmt = fmt.replace(new RegExp(`${k}`), match => {
-                let str = o[k] + ''
-                if (match.length !== 1) {
-                    str = str.padStart(match.length, '0')
-                }
-                return str
+                return (o[k] + '').padStart(match.length, '0')
             })
         }
     }
