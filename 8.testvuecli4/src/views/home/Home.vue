@@ -101,6 +101,7 @@ export default {
 
     this.$bus.$on("itemImageLoad", () => {
       this.$refs.scroll && refresh();
+      console.log("1111"); //在详情页推荐部分加载图片时也会触发当前事件
     });
 
     //获取tabcontrol的offsetTop
