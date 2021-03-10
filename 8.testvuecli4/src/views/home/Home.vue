@@ -76,6 +76,7 @@ export default {
       tabOffsetTop: 0,
       isTabFixed: false,
       saveY: 0,
+      itemImgListener: null,
     };
   },
   components: {
@@ -99,10 +100,10 @@ export default {
   mounted() {
     const refresh = debounce(this.$refs.scroll.refresh, 200);
 
-    this.$bus.$on("itemImageLoad", () => {
+    this.itemImgListener = () => {
       this.$refs.scroll && refresh();
-      console.log("1111"); //在详情页推荐部分加载图片时也会触发当前事件
-    });
+    };
+    this.$bus.$on("itemImageLoad", this.itemImgListener);
 
     //获取tabcontrol的offsetTop
     //this.$refs.tabControl获取的组件
@@ -172,6 +173,9 @@ export default {
   },
   deactivated() {
     this.saveY = this.$refs.scroll.getScrollY();
+
+    //取消全局事件的监听
+    this.$bus.$off("itemImageLoad", this.itemImgListener);
   },
 };
 </script>
