@@ -1,17 +1,14 @@
 <template>
   <div id="detail">
-    <detail-nav-bar></detail-nav-bar>
+    <detail-nav-bar @titleclick="titleclick"></detail-nav-bar>
     <scroll class="detail-content" ref="scroll">
       <detail-swiper :top-images="topImages"></detail-swiper>
       <detail-base-info :goods="goods"></detail-base-info>
       <detail-shop-info :shop="shop"></detail-shop-info>
-      <detail-goods-info
-        :detail-info="detailInfo"
-        @imageLoad="imageLoad"
-      ></detail-goods-info>
-      <detail-param-info :param-info="paramInfo"></detail-param-info>
-      <detail-comment-info :comment-info="commentInfo"></detail-comment-info>
-      <goods-list :goods="recommendList"></goods-list>
+      <detail-goods-info :detail-info="detailInfo" @imageLoad="imageLoad"></detail-goods-info>
+      <detail-param-info :param-info="paramInfo" ref="params"></detail-param-info>
+      <detail-comment-info :comment-info="commentInfo" ref="comment"></detail-comment-info>
+      <goods-list :goods="recommendList" ref="recommend"></goods-list>
     </scroll>
   </div>
 </template>
@@ -60,6 +57,7 @@ export default {
       paramInfo: {},
       commentInfo: {},
       recommendList: [],
+      themeTopYs: [],
     };
   },
   created() {
@@ -103,6 +101,14 @@ export default {
   methods: {
     imageLoad() {
       this.$refs.scroll.refresh();
+      this.themeTopYs = [];
+      this.themeTopYs.push(0);
+      this.themeTopYs.push(this.$refs.params.$el.offsetTop - 44);
+      this.themeTopYs.push(this.$refs.comment.$el.offsetTop - 44);
+      this.themeTopYs.push(this.$refs.recommend.$el.offsetTop - 44);
+    },
+    titleclick(index) {
+      this.$refs.scroll.scrollTo(0, -this.themeTopYs[index], 100);
     },
   },
   destroyed() {

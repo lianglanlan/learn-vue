@@ -2,7 +2,7 @@
   <div>
     <nav-bar>
       <div slot="left" class="back" @click="backClick">
-        <img src="~assets/img/common/back.svg" alt="" />
+        <img src="~assets/img/common/back.svg" alt />
       </div>
       <div slot="center" class="title">
         <div
@@ -11,9 +11,7 @@
           class="title-item"
           :class="{ active: currentIndex === index }"
           @click="itemClick(index)"
-        >
-          {{ item }}
-        </div>
+        >{{ item }}</div>
       </div>
     </nav-bar>
   </div>
@@ -33,6 +31,7 @@ export default {
   methods: {
     itemClick(index) {
       this.currentIndex = index;
+      this.$emit("titleclick", index);
     },
     backClick() {
       this.$router.back();
