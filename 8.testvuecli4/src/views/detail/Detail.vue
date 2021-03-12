@@ -1,7 +1,13 @@
 <template>
   <div id="detail">
-    <detail-nav-bar @titleclick="titleclick"></detail-nav-bar>
-    <scroll class="detail-content" ref="scroll" :pull-up-load="true">
+    <detail-nav-bar @titleclick="titleclick" ref="nav"></detail-nav-bar>
+    <scroll
+      class="detail-content"
+      ref="scroll"
+      :pull-up-load="true"
+      :probe-type="3"
+      @scroll="contentScroll"
+    >
       <detail-swiper :top-images="topImages"></detail-swiper>
       <detail-base-info :goods="goods"></detail-base-info>
       <detail-shop-info :shop="shop"></detail-shop-info>
@@ -58,6 +64,7 @@ export default {
       commentInfo: {},
       recommendList: [],
       themeTopYs: [],
+      currentIndex: 0,
     };
   },
   created() {
@@ -109,6 +116,23 @@ export default {
     },
     titleclick(index) {
       this.$refs.scroll.scrollTo(0, -this.themeTopYs[index], 100);
+    },
+    contentScroll(position) {
+      const positionY = -position.y;
+      let length = this.themeTopYs.length;
+      for (let i = 0; i < length; i++) {
+        if (this.currentIndex !== i) {
+          if (
+            (i < length - 1 &&
+              positionY >= this.themeTopYs[i] &&
+              positionY < this.themeTopYs[i + 1]) ||
+            (i === length - 1 && positionY >= this.themeTopYs[i])
+          ) {
+            this.currentIndex = i;
+            this.$refs.nav.currentIndex = i;
+          }
+        }
+      }
     },
   },
   destroyed() {
