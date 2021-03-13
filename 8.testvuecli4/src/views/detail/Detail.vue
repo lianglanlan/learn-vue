@@ -113,6 +113,7 @@ export default {
       this.themeTopYs.push(this.$refs.params.$el.offsetTop - 44);
       this.themeTopYs.push(this.$refs.comment.$el.offsetTop - 44);
       this.themeTopYs.push(this.$refs.recommend.$el.offsetTop - 44);
+      this.themeTopYs.push(Number.MAX_VALUE);
     },
     titleclick(index) {
       this.$refs.scroll.scrollTo(0, -this.themeTopYs[index], 100);
@@ -120,13 +121,11 @@ export default {
     contentScroll(position) {
       const positionY = -position.y;
       let length = this.themeTopYs.length;
-      for (let i = 0; i < length; i++) {
+      for (let i = 0; i < length - 1; i++) {
         if (this.currentIndex !== i) {
           if (
-            (i < length - 1 &&
-              positionY >= this.themeTopYs[i] &&
-              positionY < this.themeTopYs[i + 1]) ||
-            (i === length - 1 && positionY >= this.themeTopYs[i])
+            positionY >= this.themeTopYs[i] &&
+            positionY < this.themeTopYs[i + 1]
           ) {
             this.currentIndex = i;
             this.$refs.nav.currentIndex = i;
