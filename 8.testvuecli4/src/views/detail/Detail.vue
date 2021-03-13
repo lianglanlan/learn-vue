@@ -17,6 +17,7 @@
       <goods-list :goods="recommendList" ref="recommend"></goods-list>
     </scroll>
     <detail-bottom-bar></detail-bottom-bar>
+    <back-top @click.native="backClick" v-show="isShowBackTop"></back-top>
   </div>
 </template>
 <script>
@@ -32,7 +33,7 @@ import DetailBottomBar from "./childComps/DetailBottomBar";
 import Scroll from "../../components/common/scroll/Scroll";
 import GoodsList from "../../components/content/goods/GoodsList";
 
-import { itemImgListener } from "../../common/mixin";
+import { itemImgListener, backTopMixin } from "../../common/mixin";
 
 import {
   getDetail,
@@ -135,12 +136,14 @@ export default {
           }
         }
       }
+      //判断返回顶部是否显示
+      this.isShowBackTop = -position.y > 1000;
     },
   },
   destroyed() {
     this.$bus.$off("itemImageLoad", this.itemImgListener);
   },
-  mixins: [itemImgListener],
+  mixins: [itemImgListener, backTopMixin],
 };
 </script>
 <style scoped>

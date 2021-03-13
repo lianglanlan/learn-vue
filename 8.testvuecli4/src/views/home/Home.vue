@@ -19,10 +19,7 @@
       :observe-Image="true"
       @pullingUp="loadMore"
     >
-      <home-swiper
-        :banners="banners"
-        @swiperImageLoad="swiperImageLoad"
-      ></home-swiper>
+      <home-swiper :banners="banners" @swiperImageLoad="swiperImageLoad"></home-swiper>
       <recommend-view :recommends="recommends"></recommend-view>
       <feature-view></feature-view>
       <tab-control
@@ -41,14 +38,13 @@ import NavBar from "components/common/navbar/NavBar";
 import Scroll from "components/common/scroll/Scroll";
 import TabControl from "components/content/tabControl/TabControl";
 import GoodsList from "components/content/goods/GoodsList";
-import BackTop from "../../components/content/backTop/BackTop";
 
 import HomeSwiper from "./childComps/HomeSwiper";
 import RecommendView from "./childComps/RecommendView";
 import FeatureView from "./childComps/FeatureView";
 
 import { getHomeMultidata, getHomeData } from "network/home";
-import { itemImgListener } from "../../common/mixin";
+import { itemImgListener, backTopMixin } from "../../common/mixin";
 
 export default {
   name: "Home",
@@ -72,7 +68,6 @@ export default {
         },
       },
       currentType: "pop",
-      isShowBackTop: false,
       tabOffsetTop: 0,
       isTabFixed: false,
       saveY: 0,
@@ -86,7 +81,6 @@ export default {
     HomeSwiper,
     RecommendView,
     FeatureView,
-    BackTop,
   },
   created() {
     //请求数据
@@ -130,9 +124,6 @@ export default {
       this.$refs.tabControl1.currentIndex = index;
       this.$refs.tabControl2.currentIndex = index;
     },
-    backClick() {
-      this.$refs.scroll.scrollTo(0, 0, 500);
-    },
     contentScroll(position) {
       //判断返回顶部是否显示
       this.isShowBackTop = -position.y > 1000;
@@ -162,7 +153,7 @@ export default {
     //取消全局事件的监听
     this.$bus.$off("itemImageLoad", this.itemImgListener);
   },
-  mixins: [itemImgListener],
+  mixins: [itemImgListener, backTopMixin],
 };
 </script>
 <style scoped>
