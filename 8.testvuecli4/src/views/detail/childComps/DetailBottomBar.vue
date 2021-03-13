@@ -1,7 +1,31 @@
 <template>
-  <div class="bottom-bar">底部的工具栏</div>
+  <div class="bottom-bar">
+    <div class="bar-item bar-left">
+      <div>
+        <i class="icon service"></i>
+        <span class="text">客服</span>
+      </div>
+      <div>
+        <i class="icon shop"></i>
+        <span class="text">店铺</span>
+      </div>
+      <div>
+        <i class="icon select"></i>
+        <span class="text">收藏</span>
+      </div>
+    </div>
+    <div class="bar-item bar-right">
+      <div class="cart" @click="addToCart">加入购物车</div>
+      <div class="buy">购买</div>
+    </div>
+  </div>
 </template>
 <script>
+export default {
+  methods: {
+    addToCart() {},
+  },
+};
 </script>
 
 <style scoped>
