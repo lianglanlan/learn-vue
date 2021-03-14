@@ -23,7 +23,9 @@
 <script>
 export default {
   methods: {
-    addToCart() {},
+    addToCart() {
+      this.$emit("addToCart");
+    },
   },
 };
 </script>
