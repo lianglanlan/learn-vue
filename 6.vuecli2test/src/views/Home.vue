@@ -3,24 +3,36 @@
     <TopBanner />
     <TopNav @itemClick="navItemclick" />
     <div class="content-wrap">
-      <ContentChart></ContentChart>
+      <ContentChart />
+      <ContentTable />
+      <TableMore @moreClick="moreClick" />
     </div>
+    <BaseFooter />
   </div>
 </template>
 <script>
 import TopBanner from "../components/TopBanner";
 import TopNav from "../components/TopNav";
 import ContentChart from "../components/ContentChart";
+import ContentTable from "../components/ContentTable";
+import TableMore from "../components/TableMore";
+import BaseFooter from "../components/BaseFooter";
 export default {
   name: "Home",
   components: {
     TopBanner,
     TopNav,
     ContentChart,
+    ContentTable,
+    TableMore,
+    BaseFooter,
   },
   methods: {
     navItemclick(index) {
       console.log(index);
+    },
+    moreClick() {
+      console.log("11");
     },
   },
 };

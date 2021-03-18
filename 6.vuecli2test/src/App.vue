@@ -32,4 +32,9 @@ a {
 ul {
   list-style: none;
 }
+
+.main-box {
+  max-width: 1440px;
+  margin: 0 auto;
+}
 </style>
