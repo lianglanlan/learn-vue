@@ -16,6 +16,23 @@ const store = new Vuex.Store({
                 payload.count = 1
                 state.cartList.push(payload)
             }
+        },
+        addCounter(state, payload) {
+            payload.count++
+        },
+        addToCart(state, payload) {
+            payload.count = 1
+            state.cartList.push(payload)
+        }
+    },
+    actions: {
+        addCart({ commit, state }, payload) {
+            let oldProduct = state.cartList.find(item => item.iid === payload.iid)
+            if (oldProduct) {
+                commit('addCounter', oldProduct)
+            } else {
+                commit('addToCart', payload)
+            }
         }
     }
 })
