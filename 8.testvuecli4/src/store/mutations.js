@@ -1,8 +1,10 @@
+import { ADD_COUNTER, ADD_TO_CART } from './mutation-types'
+
 export default {
-    addCounter(state, payload) {
+    [ADD_COUNTER](state, payload) {
         payload.count++
     },
-    addToCart(state, payload) {
+    [ADD_TO_CART](state, payload) {
         payload.count = 1
         state.cartList.push(payload)
     }
