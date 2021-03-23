@@ -19,7 +19,10 @@
       :observe-Image="true"
       @pullingUp="loadMore"
     >
-      <home-swiper :banners="banners" @swiperImageLoad="swiperImageLoad"></home-swiper>
+      <home-swiper
+        :banners="banners"
+        @swiperImageLoad="swiperImageLoad"
+      ></home-swiper>
       <recommend-view :recommends="recommends"></recommend-view>
       <feature-view></feature-view>
       <tab-control
