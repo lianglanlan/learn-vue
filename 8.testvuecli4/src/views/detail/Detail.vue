@@ -11,9 +11,18 @@
       <detail-swiper :top-images="topImages"></detail-swiper>
       <detail-base-info :goods="goods"></detail-base-info>
       <detail-shop-info :shop="shop"></detail-shop-info>
-      <detail-goods-info :detail-info="detailInfo" @imageLoad="imageLoad"></detail-goods-info>
-      <detail-param-info :param-info="paramInfo" ref="params"></detail-param-info>
-      <detail-comment-info :comment-info="commentInfo" ref="comment"></detail-comment-info>
+      <detail-goods-info
+        :detail-info="detailInfo"
+        @imageLoad="imageLoad"
+      ></detail-goods-info>
+      <detail-param-info
+        :param-info="paramInfo"
+        ref="params"
+      ></detail-param-info>
+      <detail-comment-info
+        :comment-info="commentInfo"
+        ref="comment"
+      ></detail-comment-info>
       <goods-list :goods="recommendList" ref="recommend"></goods-list>
     </scroll>
     <detail-bottom-bar @addToCart="addToCart"></detail-bottom-bar>
@@ -145,7 +154,7 @@ export default {
       product.image = this.topImages[0];
       product.title = this.goods.title;
       product.desc = this.goods.desc;
-      product.price = this.goods.newPrice;
+      product.price = this.goods.realPrice;
       product.iid = this.iid;
       //将商品添加到购物车
       this.$store.dispatch("addCart", product);

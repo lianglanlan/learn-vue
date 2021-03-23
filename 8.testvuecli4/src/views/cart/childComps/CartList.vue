@@ -33,7 +33,7 @@ export default {
 </script>
 <style>
 .cart-list {
-  height: calc(100vh - 44px - 49px);
+  height: calc(100vh - 44px - 49px - 40px);
 }
 .scroll-content {
   height: 100%;
