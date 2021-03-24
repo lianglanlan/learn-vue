@@ -4,6 +4,7 @@
       <check-button
         :is-checked="isSelectAll"
         class="check-button"
+        @click.native="checkClick"
       ></check-button>
       <span>全选</span>
     </div>
@@ -36,6 +37,17 @@ export default {
     isSelectAll() {
       if (this.cartList.length === 0) return false;
       return !this.cartList.find((item) => !item.checked);
+    },
+  },
+  methods: {
+    checkClick() {
+      if (this.isSelectAll) {
+        //全部选中时，需要变成全部不选中
+        this.cartList.forEach((item) => (item.checked = false));
+      } else {
+        //非全部选中，要变成全部选中
+        this.cartList.forEach((item) => (item.checked = true));
+      }
     },
   },
 };
