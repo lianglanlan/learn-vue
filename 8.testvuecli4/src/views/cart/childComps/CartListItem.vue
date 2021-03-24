@@ -35,7 +35,6 @@ export default {
   },
   methods: {
     checkClick() {
-      console.log(1);
       this.itemInfo.checked = !this.itemInfo.checked;
     },
   },
