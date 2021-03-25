@@ -1,13 +1,14 @@
 <template>
   <div>
-    <TopBanner />
+    <!-- <TopBanner />
     <TopNav @itemClick="navItemclick" />
     <div class="content-wrap">
       <ContentChart />
       <ContentTable />
       <TableMore @moreClick="moreClick" />
     </div>
-    <BaseFooter />
+    <BaseFooter /> -->
+    <chart></chart>
   </div>
 </template>
 <script>
@@ -17,6 +18,8 @@ import ContentChart from "../components/ContentChart";
 import ContentTable from "../components/ContentTable";
 import TableMore from "../components/TableMore";
 import BaseFooter from "../components/BaseFooter";
+import Chart from "../components/Chart";
+
 export default {
   name: "Home",
   components: {
@@ -26,6 +29,7 @@ export default {
     ContentTable,
     TableMore,
     BaseFooter,
+    Chart,
   },
   methods: {
     navItemclick(index) {

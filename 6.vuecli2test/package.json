@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "echarts": "^5.0.2",
     "html2canvas": "^1.0.0-rc.7",
     "vue": "^2.5.2",
     "vue-router": "^3.5.1"
