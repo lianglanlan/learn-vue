@@ -52,6 +52,8 @@ import {
   GoodsParams,
 } from "../../network/detail";
 
+import { mapActions } from "vuex";
+
 export default {
   name: "Detail",
   components: {
@@ -119,6 +121,7 @@ export default {
     });
   },
   methods: {
+    ...mapActions(["addCart"]),
     imageLoad() {
       this.$refs.scroll.refresh();
       this.themeTopYs = [];
@@ -157,9 +160,9 @@ export default {
       product.price = this.goods.realPrice;
       product.iid = this.iid;
       //将商品添加到购物车
-      this.$store.dispatch("addCart", product).then(res=>{
-        console.log(res)
-      })
+      this.addCart(product).then((res) => {
+        console.log(res);
+      });
     },
   },
   destroyed() {
