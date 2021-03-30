@@ -12,6 +12,16 @@ export default {
       isShow: false,
     };
   },
+  methods: {
+    show(message, duration) {
+      this.isShow = true;
+      this.message = message;
+
+      setTimeout(() => {
+        this.isShow = false;
+      }, duration);
+    },
+  },
 };
 </script>
 <style scoped>
@@ -23,5 +33,6 @@ export default {
   padding: 8px 10px;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.75);
+  z-index: 20;
 }
 </style>

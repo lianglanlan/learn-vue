@@ -161,7 +161,7 @@ export default {
       product.iid = this.iid;
       //将商品添加到购物车
       this.addCart(product).then((res) => {
-        console.log(res);
+        this.$toast.show(res, 2000);
       });
     },
   },
