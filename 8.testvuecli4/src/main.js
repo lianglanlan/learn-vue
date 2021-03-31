@@ -7,6 +7,12 @@ import toast from './components/common/toast'
 import FastClick from 'fastclick'
 FastClick.attach(document.body);
 
+import VueLazyLoad from 'vue-lazyload'
+//使用懒加载
+Vue.use(VueLazyLoad, {
+  loading: require('./assets/img/common/placeholder.png')  //加载图占位
+})
+
 //安装toast插件
 Vue.use(toast)
 
