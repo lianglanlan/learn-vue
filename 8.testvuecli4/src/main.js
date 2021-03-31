@@ -4,6 +4,9 @@ import router from './router'
 import store from './store'
 import toast from './components/common/toast'
 
+import FastClick from 'fastclick'
+FastClick.attach(document.body);
+
 //安装toast插件
 Vue.use(toast)
 
