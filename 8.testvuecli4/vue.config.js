@@ -1,14 +1,34 @@
+const CopyPlugin = require("copy-webpack-plugin");
+const path = require('path');
+
 module.exports = {
-    configureWebpack: {
-        resolve: {
-            alias: {
-                //@符号已被配置为src
-                'assets': '@/assets',
-                'common': '@/common',
-                'network': '@/network',
-                'components': '@/components',
-            }
+    assetsDir: 'static',
+    configureWebpack: config => {
+        return {
+            resolve: {
+                alias: {
+                    //@符号已被配置为src
+                    'assets': '@/assets',
+                    'common': '@/common',
+                    'network': '@/network',
+                    'components': '@/components',
+                }
+            },
+            plugins: [
+                new CopyPlugin({
+                    patterns: [
+                        { from: "./src/static", to: "./static" },
+                    ],
+                }),
+            ],
         }
+    },
+    chainWebpack: config => {
+        config.module
+            .rule('images')
+            .use('url-loader')
+            .loader('url-loader')
+            .tap(options => Object.assign(options, { limit: 1000 }))
     },
     css: {
         loaderOptions: {
