@@ -1,5 +1,9 @@
 const CopyPlugin = require("copy-webpack-plugin");
+
+const SpritesmithPlugin = require('webpack-spritesmith')
 const path = require('path');
+
+const sprite = require('./config/sprite')
 
 module.exports = {
     assetsDir: 'static',
@@ -20,6 +24,60 @@ module.exports = {
                         { from: "./src/static", to: "./static" },
                     ],
                 }),
+                new SpritesmithPlugin({
+                    src: {
+                        cwd: path.resolve(__dirname, './src/assets/sprite/common'), // 图标根路径
+                        glob: '**/*.png' // 匹配任意 png 图标
+                    },
+                    target: {
+                        image: path.resolve(__dirname, './src/assets/images/sprites/common.png'), // 生成雪碧图目标路径与名称
+                        // 设置生成CSS背景及其定位的文件或方式
+                        css: [
+                            [
+                                path.resolve(__dirname, './src/assets/css/sprites/sprite_common.scss'),
+                                {
+                                    format: 'function_based_template'
+                                }
+                            ]
+                        ]
+                    },
+                    customTemplates: {
+                        function_based_template: sprite.SpritesmithTemplate
+                    },
+                    apiOptions: {
+                        cssImageRef: '../images/sprites/common.png' // css文件中引用雪碧图的相对位置路径配置
+                    },
+                    spritesmithOptions: {
+                        padding: 2
+                    }
+                }),
+                new SpritesmithPlugin({
+                    src: {
+                        cwd: path.resolve(__dirname, './src/assets/sprite/home'), // 图标根路径
+                        glob: '**/*.png' // 匹配任意 png 图标
+                    },
+                    target: {
+                        image: path.resolve(__dirname, './src/assets/images/sprites/home.png'), // 生成雪碧图目标路径与名称
+                        // 设置生成CSS背景及其定位的文件或方式
+                        css: [
+                            [
+                                path.resolve(__dirname, './src/assets/css/sprites/sprite_home.scss'),
+                                {
+                                    format: 'function_based_template'
+                                }
+                            ]
+                        ]
+                    },
+                    customTemplates: {
+                        function_based_template: sprite.SpritesmithTemplate
+                    },
+                    apiOptions: {
+                        cssImageRef: '../images/sprites/home.png' // css文件中引用雪碧图的相对位置路径配置
+                    },
+                    spritesmithOptions: {
+                        padding: 2
+                    }
+                })
             ],
         }
     },
