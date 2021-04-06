@@ -1,20 +1,16 @@
 <template>
-  <div class="back-top">
-    <img src="~assets/img/common/top.png" alt="" />
-  </div>
+  <div class="back-top ico ico-logo"></div>
 </template>
 <script>
 export default {};
 </script>
-<style scoped>
+<style scoped lang="scss">
+@import url("../../../assets/css/sprites/sprite_common.scss");
+
 .back-top {
   position: fixed;
   right: 10px;
   bottom: 60px;
-}
-
-.back-top img {
-  display: block;
-  width: 43px;
+  // @extend %ico-top;
 }
 </style>

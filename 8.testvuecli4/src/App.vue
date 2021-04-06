@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img src="./assets/img/logo.png" alt="" />
     <main-tab-bar></main-tab-bar>
     <keep-alive exclude="Detail">
       <router-view></router-view>
