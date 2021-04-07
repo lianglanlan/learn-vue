@@ -1,0 +1,20 @@
+
+
+
+%icon { 
+    background-image: -webkit-image-set(url(~@/assets/img/sprites/home@1x.png?v=6d654) 1x,url(~@/assets/img/sprites/home@2x.png?v=46688) 2x);
+    background-size: 18px 11px; 
+}
+
+%icon-all-time{
+    width: 10px; 
+    height: 11px; 
+    background-position: 0px 0px;
+}
+                
+%icon-arrow-left{
+    width: 6px; 
+    height: 10px; 
+    background-position: -12px 0px;
+}
+                
