@@ -46,15 +46,7 @@
       ipsam, aut rem quo repellat esse tempore id, quidem
     </div> -->
     <div
-      class="
-        box-border
-        p-4
-        h-32
-        w-32
-        border-light-blue-400
-        bg-light-blue-200
-        border-4
-      "
+      class="box-border p-4 h-32 w-32 border-blue-3 bg-light-blue-200 border-4"
     ></div>
   </div>
 </template>
