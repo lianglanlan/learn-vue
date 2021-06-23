@@ -29,6 +29,7 @@
     "postcss-px-to-viewport": "^1.1.1",
     "sass-loader": "^7.0.0",
     "vue-template-compiler": "^2.6.11",
+    "webpack-bundle-analyzer": "^4.4.2",
     "webpack-spritesmith": "^1.1.0"
   }
 }

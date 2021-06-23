@@ -1,0 +1,20 @@
+{
+  "name": "12.tailwind",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@fullhuman/postcss-purgecss": "^1.3.0",
+    "core-js": "^3.15.1",
+    "tailwindcss": "^1.1.4",
+    "vue": "^2.6.14"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.5.13",
+    "@vue/cli-service": "^4.5.13",
+    "vue-template-compiler": "^2.6.14"
+  }
+}

@@ -43,6 +43,11 @@ module.exports = {
                 gifsicle: { interlaced: false },
                 webp: { quality: 75 }
             });
+        if (process.env.NODE_ENV === 'production') {
+            config.plugin('webpack-bundle-analyzer')
+                .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
+                .end()
+        }
     },
     css: {
         loaderOptions: {
